@@ -1,0 +1,3 @@
+mmi_core_homepage:
+    path:     /
+    defaults: { _controller: MMICoreBundle:Default:index }

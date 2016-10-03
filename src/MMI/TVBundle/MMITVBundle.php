@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace MMI\TVBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class MMITVBundle extends Bundle
 {
 }

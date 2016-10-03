@@ -1,0 +1,38 @@
+mmi_tv_home:
+    path:     /
+    defaults:
+        _controller: MMITVBundle:Video:index
+
+mmi_tv_live:
+    path:    /live
+    defaults:
+        _controller: MMITVBundle:Video:live
+
+mmi_tv_login:
+    path:    /login
+    defaults:
+        _controller: MMITVBundle:Video:login
+
+mmi_tv_add:
+    path:    /add
+    defaults:
+        _controller: MMITVBundle:Video:add
+
+mmi_tv_library:
+    path:    /library
+    defaults:
+        _controller: MMITVBundle:Video:library
+
+mmi_tv_profile:
+    path:    /profile/{id}
+    defaults:
+        _controller: MMITVBundle:Video:profile
+    requirements:
+        id: \d+
+
+
+mmi_tv_adminprofile:
+    path:    /profile/admin
+    defaults:
+        _controller: MMITVBundle:Video:adminprofile
+
