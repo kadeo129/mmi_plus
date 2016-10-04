@@ -1,3 +1,19 @@
+mmitv_grid:
+    resource: "@MMITVBundle/Controller/GridController.php"
+    type:     annotation
+
+mmitv_bloc:
+    resource: "@MMITVBundle/Controller/BlocController.php"
+    type:     annotation
+
+mmitv_category:
+    resource: "@MMITVBundle/Controller/CategoryController.php"
+    type:     annotation
+
+mmitv_video:
+    resource: "@MMITVBundle/Controller/VideoController.php"
+    type:     annotation
+
 mmi_core:
     resource: "@MMICoreBundle/Resources/config/routing.yml"
     prefix:   /

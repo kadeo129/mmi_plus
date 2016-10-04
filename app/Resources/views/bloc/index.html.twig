@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Bloc list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Duration</th>
+                <th>Slot</th>
+                <th>Status</th>
+                <th>Weeknumber</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bloc in blocs %}
+            <tr>
+                <td><a href="{{ path('bloc_show', { 'id': bloc.id }) }}">{{ bloc.id }}</a></td>
+                <td>{{ bloc.duration }}</td>
+                <td>{{ bloc.slot }}</td>
+                <td>{% if bloc.status %}Yes{% else %}No{% endif %}</td>
+                <td>{{ bloc.weekNumber }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('bloc_show', { 'id': bloc.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('bloc_edit', { 'id': bloc.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('bloc_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

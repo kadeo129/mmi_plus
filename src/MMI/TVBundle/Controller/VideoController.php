@@ -2,29 +2,139 @@
 
 namespace MMI\TVBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use MMI\TVBundle\Entity\Video;
+use MMI\TVBundle\Form\VideoType;
 
-
+/**
+ * Video controller.
+ *
+ * @Route("/video")
+ */
 class VideoController extends Controller
 {
+    /**
+     * Lists all Video entities.
+     *
+     * @Route("/", name="video_index")
+     * @Method("GET")
+     */
     public function indexAction()
     {
-        return $this->render('MMITVBundle:Video:index.html.twig', array(
+        $em = $this->getDoctrine()->getManager();
+
+        $videos = $em->getRepository('MMITVBundle:Video')->findAll();
+
+        return $this->render('video/index.html.twig', array(
+            'videos' => $videos,
         ));
     }
 
-    public function libraryAction()
+    /**
+     * Creates a new Video entity.
+     *
+     * @Route("/new", name="video_new")
+     * @Method({"GET", "POST"})
+     */
+    public function newAction(Request $request)
     {
-        return $this->render('MMITVBundle:Video:library.html.twig', array(
+        $video = new Video();
+        $form = $this->createForm('MMI\TVBundle\Form\VideoType', $video);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($video);
+            $em->flush();
+
+            return $this->redirectToRoute('video_show', array('id' => $video->getId()));
+        }
+
+        return $this->render('video/new.html.twig', array(
+            'video' => $video,
+            'form' => $form->createView(),
         ));
     }
 
-    public function addAction()
+    /**
+     * Finds and displays a Video entity.
+     *
+     * @Route("/{id}", name="video_show")
+     * @Method("GET")
+     */
+    public function showAction(Video $video)
     {
-        return $this->render('MMITVBundle:Video:add.html.twig', array(
+        $deleteForm = $this->createDeleteForm($video);
+
+        return $this->render('video/show.html.twig', array(
+            'video' => $video,
+            'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Displays a form to edit an existing Video entity.
+     *
+     * @Route("/{id}/edit", name="video_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Video $video)
+    {
+        $deleteForm = $this->createDeleteForm($video);
+        $editForm = $this->createForm('MMI\TVBundle\Form\VideoType', $video);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($video);
+            $em->flush();
+
+            return $this->redirectToRoute('video_edit', array('id' => $video->getId()));
+        }
+
+        return $this->render('video/edit.html.twig', array(
+            'video' => $video,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+     * Deletes a Video entity.
+     *
+     * @Route("/{id}", name="video_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction(Request $request, Video $video)
+    {
+        $form = $this->createDeleteForm($video);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($video);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('video_index');
+    }
+
+    /**
+     * Creates a form to delete a Video entity.
+     *
+     * @param Video $video The Video entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Video $video)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('video_delete', array('id' => $video->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+        ;
     }
 }
