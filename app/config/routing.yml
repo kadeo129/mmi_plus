@@ -14,10 +14,9 @@ mmitv_video:
     resource: "@MMITVBundle/Controller/VideoController.php"
     type:     annotation
 
-mmi_core:
-    resource: "@MMICoreBundle/Resources/config/routing.yml"
-    prefix:   /
-
 mmitv:
     resource: "@MMITVBundle/Resources/config/routing.yml"
     prefix:   /tv
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
