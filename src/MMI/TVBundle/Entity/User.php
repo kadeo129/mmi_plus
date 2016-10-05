@@ -31,4 +31,43 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
+    /**
+     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="user")
+     */
+    private $videos;
+
+    /**
+     * Add video
+     *
+     * @param \MMI\TVBundle\Entity\Video $video
+     *
+     * @return User
+     */
+    public function addVideo(\MMI\TVBundle\Entity\Video $video)
+    {
+        $this->videos[] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \MMI\TVBundle\Entity\Video $video
+     */
+    public function removeVideo(\MMI\TVBundle\Entity\Video $video)
+    {
+        $this->videos->removeElement($video);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVideos()
+    {
+        return $this->videos;
+    }
 }

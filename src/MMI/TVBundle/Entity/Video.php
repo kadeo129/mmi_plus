@@ -76,7 +76,7 @@ class Video
     private $blocs;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\User", inversedBy="user")
+     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\User", inversedBy="videos")
      */
     private $user;
 
