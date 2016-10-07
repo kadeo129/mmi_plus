@@ -5,6 +5,7 @@ namespace MMI\TVBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class VideoType extends AbstractType
 {
@@ -21,7 +22,12 @@ class VideoType extends AbstractType
             ->add('description')
             ->add('date')
             ->add('poster')
-            ->add('category')
+            ->add('category', EntityType::class,array(
+                'class' => 'MMITVBundle:Category',
+                'choice_label'=>'name',
+                'multiple' => false,
+                'expanded' => false,
+            ))
             ->add('blocs')
             ->add('user')
         ;

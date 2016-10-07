@@ -18,7 +18,7 @@
         {% for bloc in blocs %}
             <tr>
                 <td><a href="{{ path('bloc_show', { 'id': bloc.id }) }}">{{ bloc.id }}</a></td>
-                <td>{{ bloc.duration }}</td>
+                <td>{{ bloc.duration|date("m/d/Y") }}</td>
                 <td>{{ bloc.slot }}</td>
                 <td>{% if bloc.status %}Yes{% else %}No{% endif %}</td>
                 <td>{{ bloc.weekNumber }}</td>

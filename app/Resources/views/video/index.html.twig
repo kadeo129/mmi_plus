@@ -14,6 +14,7 @@
                 <th>Date</th>
                 <th>Poster</th>
                 <th>Actions</th>
+                <th>Category</th>
             </tr>
         </thead>
         <tbody>
@@ -22,10 +23,11 @@
                 <td><a href="{{ path('video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
                 <td>{{ video.title }}</td>
                 <td>{{ video.url }}</td>
-                <td>{{ video.duration }}</td>
+                <td>{{ video.duration|date("m/d/Y") }}</td>
                 <td>{{ video.description }}</td>
-                <td>{{ video.date }}</td>
+                <td>{{ video.date|date("m/d/Y") }}</td>
                 <td>{{ video.poster }}</td>
+                <td>{{ video.category.name }}</td>
                 <td>
                     <ul>
                         <li>

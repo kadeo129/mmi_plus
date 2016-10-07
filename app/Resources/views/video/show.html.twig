@@ -19,15 +19,19 @@
             </tr>
             <tr>
                 <th>Duration</th>
-                <td>{{ video.duration }}</td>
+                <td>{{ video.duration|date("m/d/Y") }}</td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>{{ video.description }}</td>
             </tr>
             <tr>
+                <th>Catégorie</th>
+                <td>{{ video.category }}</td>
+            </tr>
+            <tr>
                 <th>Date</th>
-                <td>{{ video.date }}</td>
+                <td>{{ video.date|date("m/d/Y") }}</td>
             </tr>
             <tr>
                 <th>Poster</th>

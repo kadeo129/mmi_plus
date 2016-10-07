@@ -1,16 +1,26 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <h1>Video creation</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <h1>Ajouter une vidéo</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                {% form_theme form "form.html.twig" %}
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" value="Create" />
+                {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('video_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                <ul>
+                    <li>
+                        <a href="{{ path('video_index') }}">Back to the list</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
 {% endblock %}
+

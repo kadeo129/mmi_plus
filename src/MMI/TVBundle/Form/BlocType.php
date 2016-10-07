@@ -3,6 +3,7 @@
 namespace MMI\TVBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,12 +21,12 @@ class BlocType extends AbstractType
             ->add('slot')
             ->add('status')
             ->add('weekNumber')
-            ->add('videos')
+            ->add('videos', CollectionType::class,array())
             ->add('category', EntityType::class,array(
                 'class' => 'MMITVBundle:Category',
                 'choice_label'=>'name',
-                'multiple' => 'false',
-                'expanded' => 'false',
+                'multiple' => false,
+                'expanded' => false,
             ))
             ->add('grid')
         ;
