@@ -29,15 +29,14 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="category", cascade={"remove"}, orphanRemoval=true)
      */
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Bloc", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Bloc", mappedBy="category", cascade={"remove"})
      */
     private $blocs;
-
 
     /**
      * Get id

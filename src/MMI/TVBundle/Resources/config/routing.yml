@@ -1,0 +1,135 @@
+
+# src/OC/PlatformBundle/Resources/config/routing.yml
+
+mmitv_home:
+    path:    /{page}
+    defaults:
+        _controller: MMITVBundle:Main:index
+        page:    1
+    requirements:
+        page: \d*
+
+mmitv_bloc_index:
+    path:   /bloc
+    defaults:
+        _controller: MMITVBundle:Bloc:index
+
+mmitv_bloc_new:
+    path:    /bloc/new
+    defaults:
+        _controller: MMITVBundle:Bloc:new
+
+mmitv_bloc_show:
+    path:    /bloc/show/{id}
+    defaults:
+        _controller: MMITVBundle:Bloc:show
+    requirements:
+            id:    \d+
+
+mmitv_bloc_edit:
+    path:    /bloc/edit/{id}
+    defaults:
+        _controller: MMITVBundle:Bloc:edit
+    requirements:
+            id:    \d+
+
+mmitv_bloc_delete:
+    path:    /bloc/delete/{id}
+    defaults:
+        _controller: MMITVBundle:Bloc:delete
+    requirements:
+            id:    \d+
+
+mmitv_category_index:
+    path:   /category
+    defaults:
+        _controller: MMITVBundle:Category:index
+
+mmitv_category_new:
+    path:    /category/new
+    defaults:
+        _controller: MMITVBundle:Category:new
+
+mmitv_category_show:
+    path:    /category/show/{id}
+    defaults:
+        _controller: MMITVBundle:Category:show
+    requirements:
+            id:    \d+
+
+mmitv_category_edit:
+    path:    /category/edit/{id}
+    defaults:
+        _controller: MMITVBundle:Category:edit
+    requirements:
+            id:    \d+
+
+mmitv_category_delete:
+    path:    /category/delete/{id}
+    defaults:
+        _controller: MMITVBundle:Category:delete
+    requirements:
+            id:    \d+
+
+mmitv_grid_index:
+    path:   /grid
+    defaults:
+        _controller: MMITVBundle:Grid:index
+
+mmitv_grid_new:
+    path:    /grid/new
+    defaults:
+        _controller: MMITVBundle:Grid:new
+
+mmitv_grid_show:
+    path:    /grid/show/{id}
+    defaults:
+        _controller: MMITVBundle:Grid:show
+    requirements:
+            id:    \d+
+
+mmitv_grid_edit:
+    path:    /grid/edit/{id}
+    defaults:
+        _controller: MMITVBundle:Grid:edit
+    requirements:
+            id:    \d+
+
+mmitv_grid_delete:
+    path:    /grid/delete/{id}
+    defaults:
+        _controller: MMITVBundle:Grid:delete
+    requirements:
+            id:    \d+
+
+mmitv_video_index:
+    path:   /video
+    defaults:
+        _controller: MMITVBundle:Video:index
+
+mmitv_video_new:
+    path:    /video/new
+    defaults:
+        _controller: MMITVBundle:Video:new
+
+mmitv_video_show:
+    path:    /video/show/{id}
+    defaults:
+        _controller: MMITVBundle:Video:show
+    requirements:
+            id:    \d+
+
+mmitv_video_edit:
+    path:    /video/edit/{id}
+    defaults:
+        _controller: MMITVBundle:Video:edit
+    requirements:
+            id:    \d+
+
+mmitv_video_delete:
+    path:    /video/delete/{id}
+    defaults:
+        _controller: MMITVBundle:Video:delete
+    requirements:
+            id:    \d+
+

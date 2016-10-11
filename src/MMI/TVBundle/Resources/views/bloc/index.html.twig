@@ -17,7 +17,7 @@
         <tbody>
         {% for bloc in blocs %}
             <tr>
-                <td><a href="{{ path('bloc_show', { 'id': bloc.id }) }}">{{ bloc.id }}</a></td>
+                <td><a href="{{ path('mmitv_bloc_show', { 'id': bloc.id }) }}">{{ bloc.id }}</a></td>
                 <td>{{ bloc.duration|date("m/d/Y") }}</td>
                 <td>{{ bloc.slot }}</td>
                 <td>{% if bloc.status %}Yes{% else %}No{% endif %}</td>
@@ -25,10 +25,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('bloc_show', { 'id': bloc.id }) }}">show</a>
+                            <a href="{{ path('mmitv_bloc_show', { 'id': bloc.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('bloc_edit', { 'id': bloc.id }) }}">edit</a>
+                            <a href="{{ path('mmitv_bloc_edit', { 'id': bloc.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -39,7 +39,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('bloc_new') }}">Create a new entry</a>
+            <a href="{{ path('mmitv_bloc_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

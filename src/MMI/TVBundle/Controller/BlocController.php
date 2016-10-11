@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MMI\TVBundle\Entity\Bloc;
 use MMI\TVBundle\Form\BlocType;
+use MMI\TVBundle\MMIRenew\MMIRenew;
 
 /**
  * Bloc controller.
@@ -16,29 +17,17 @@ use MMI\TVBundle\Form\BlocType;
  */
 class BlocController extends Controller
 {
-    /**
-     * Lists all Bloc entities.
-     *
-     * @Route("/", name="bloc_index")
-     * @Method("GET")
-     */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
         $blocs = $em->getRepository('MMITVBundle:Bloc')->findAll();
 
-        return $this->render('bloc/index.html.twig', array(
+        return $this->render('MMITVBundle:bloc:index.html.twig', array(
             'blocs' => $blocs,
         ));
     }
 
-    /**
-     * Creates a new Bloc entity.
-     *
-     * @Route("/new", name="bloc_new")
-     * @Method({"GET", "POST"})
-     */
     public function newAction(Request $request)
     {
         $bloc = new Bloc();
@@ -50,37 +39,25 @@ class BlocController extends Controller
             $em->persist($bloc);
             $em->flush();
 
-            return $this->redirectToRoute('bloc_show', array('id' => $bloc->getId()));
+            return $this->redirectToRoute('mmitv_bloc_show', array('id' => $bloc->getId()));
         }
 
-        return $this->render('bloc/new.html.twig', array(
+        return $this->render('MMITVBundle:bloc:new.html.twig', array(
             'bloc' => $bloc,
             'form' => $form->createView(),
         ));
     }
 
-    /**
-     * Finds and displays a Bloc entity.
-     *
-     * @Route("/{id}", name="bloc_show")
-     * @Method("GET")
-     */
     public function showAction(Bloc $bloc)
     {
         $deleteForm = $this->createDeleteForm($bloc);
 
-        return $this->render('bloc/show.html.twig', array(
+        return $this->render('MMITVBundle:bloc:show.html.twig', array(
             'bloc' => $bloc,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Displays a form to edit an existing Bloc entity.
-     *
-     * @Route("/{id}/edit", name="bloc_edit")
-     * @Method({"GET", "POST"})
-     */
     public function editAction(Request $request, Bloc $bloc)
     {
         $deleteForm = $this->createDeleteForm($bloc);
@@ -92,22 +69,16 @@ class BlocController extends Controller
             $em->persist($bloc);
             $em->flush();
 
-            return $this->redirectToRoute('bloc_edit', array('id' => $bloc->getId()));
+            return $this->redirectToRoute('mmitv_bloc_edit', array('id' => $bloc->getId()));
         }
 
-        return $this->render('bloc/edit.html.twig', array(
+        return $this->render('MMITVBundle:bloc:edit.html.twig', array(
             'bloc' => $bloc,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Deletes a Bloc entity.
-     *
-     * @Route("/{id}", name="bloc_delete")
-     * @Method("DELETE")
-     */
     public function deleteAction(Request $request, Bloc $bloc)
     {
         $form = $this->createDeleteForm($bloc);
@@ -119,22 +90,24 @@ class BlocController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('bloc_index');
+        return $this->redirectToRoute('mmitv_bloc_index');
     }
 
-    /**
-     * Creates a form to delete a Bloc entity.
-     *
-     * @param Bloc $bloc The Bloc entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
     private function createDeleteForm(Bloc $bloc)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('bloc_delete', array('id' => $bloc->getId())))
+            ->setAction($this->generateUrl('mmitv_bloc_delete', array('id' => $bloc->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function renewAction($weeknumber)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $renew = new MMIRenew($em);
+        $renew->renew($weeknumber);
+        $this->get('session')->getFlashBag()->set('notice', 'Nouvelle grille générée.');
+        return $this->redirectToRoute('mmitv_bloc_index');
     }
 }

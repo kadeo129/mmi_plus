@@ -22,9 +22,9 @@ class Bloc
     private $id;
 
     /**
-     * @var \DateTime
+     * @var time
      *
-     * @ORM\Column(name="duration", type="datetimetz")
+     * @ORM\Column(name="duration", type="time")
      */
     private $duration;
 
@@ -60,10 +60,9 @@ class Bloc
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Grid", inversedBy="blocs")
+     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Grid", inversedBy="blocs", cascade={"persist", "remove"})
      */
     private $grid;
-
 
     /**
      * Get id
@@ -73,30 +72,6 @@ class Bloc
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param \DateTime $duration
-     *
-     * @return Bloc
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return \DateTime
-     */
-    public function getDuration()
-    {
-        return $this->duration;
     }
 
     /**
@@ -258,5 +233,29 @@ class Bloc
     public function getGrid()
     {
         return $this->grid;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param \DateTime $duration
+     *
+     * @return Bloc
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return \DateTime
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 }
