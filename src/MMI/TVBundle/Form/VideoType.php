@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class VideoType extends AbstractType
 {
@@ -28,8 +29,12 @@ class VideoType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ))
-            ->add('blocs')
-            ->add('user')
+            ->add('blocs', EntityType::class, array(
+                'class'        => 'MMITVBundle:Bloc',
+                'choice_label' => 'slot',
+                'multiple'     => true,
+                'expanded' => false,
+            ))
         ;
     }
     

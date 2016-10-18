@@ -10,4 +10,20 @@ namespace MMI\TVBundle\Repository;
  */
 class VideoRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getNbRelatedVideos($id)
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb ->innerJoin('v.category','c')
+            ->addSelect('c')
+            ->andWhere('c=:id')
+            ->setParameter('id',$id)
+            ->select('COUNT(v)')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
 }

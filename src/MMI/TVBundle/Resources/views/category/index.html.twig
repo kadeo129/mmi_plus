@@ -10,6 +10,11 @@
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-danger">
+                <strong>Erreur</strong> : {{ message }}
+            </div>
+        {% endfor %}
         </thead>
         <tbody>
         {% for category in categories %}

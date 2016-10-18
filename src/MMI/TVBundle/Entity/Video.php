@@ -72,11 +72,13 @@ class Video
 
     /**
      * @ORM\ManyToMany(targetEntity="MMI\TVBundle\Entity\Bloc", cascade={"persist"}, inversedBy="videos")
+     * @ORM\JoinColumn(name="bloc",referencedColumnName="id", onDelete="CASCADE")
      */
     private $blocs;
 
     /**
      * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\User", inversedBy="videos")
+     * @ORM\JoinColumn(name="user",referencedColumnName="id", onDelete="CASCADE")
      */
     private $user;
 

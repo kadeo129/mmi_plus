@@ -36,7 +36,7 @@ class Grid
     private $status;
 
     /**
-     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Bloc", mappedBy="grid")
+     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Bloc", mappedBy="grid", cascade={"remove"})
      */
     private $blocs;
 

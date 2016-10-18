@@ -20,7 +20,7 @@
         <tbody>
         {% for video in videos %}
             <tr>
-                <td><a href="{{ path('video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
+                <td><a href="{{ path('mmitv_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
                 <td>{{ video.title }}</td>
                 <td>{{ video.url }}</td>
                 <td>{{ video.duration|date("m/d/Y") }}</td>
@@ -31,10 +31,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('video_show', { 'id': video.id }) }}">show</a>
+                            <a href="{{ path('mmitv_video_show', { 'id': video.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('video_edit', { 'id': video.id }) }}">edit</a>
+                            <a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -45,7 +45,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('video_new') }}">Create a new entry</a>
+            <a href="{{ path('mmitv_video_new') }}">Create a new entry</a>
         </li>
     </ul>
 {% endblock %}

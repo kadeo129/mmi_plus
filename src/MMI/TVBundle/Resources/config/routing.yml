@@ -133,3 +133,10 @@ mmitv_video_delete:
     requirements:
             id:    \d+
 
+mmitv_category_test:
+    path:    /category/test/{id}
+    defaults:
+        _controller: MMITVBundle:Category:test
+    requirements:
+            id:    \d+
+

@@ -50,17 +50,19 @@ class Bloc
     private $weekNumber;
 
     /**
-     * @ORM\ManyToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="blocs")
+     * @ORM\ManyToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="blocs", cascade={"remove"})
      */
     private $videos;
 
     /**
      * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Category", inversedBy="blocs")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id", onDelete="CASCADE")
      */
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Grid", inversedBy="blocs", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Grid", inversedBy="blocs")
+     * @ORM\JoinColumn(name="grid", referencedColumnName="id", onDelete="CASCADE")
      */
     private $grid;
 

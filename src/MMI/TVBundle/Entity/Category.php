@@ -29,7 +29,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="category", cascade={"remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="category", cascade={"remove"})
      */
     private $videos;
 

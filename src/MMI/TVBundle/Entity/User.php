@@ -33,7 +33,7 @@ class User extends BaseUser
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="user", cascade={"remove"})
      */
     private $videos;
 

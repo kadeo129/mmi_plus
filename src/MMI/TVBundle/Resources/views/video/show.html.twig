@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <th>Catégorie</th>
-                <td>{{ video.category }}</td>
+                <td>{{ video.category.name }}</td>
             </tr>
             <tr>
                 <th>Date</th>
@@ -42,10 +42,10 @@
 
     <ul>
         <li>
-            <a href="{{ path('video_index') }}">Back to the list</a>
+            <a href="{{ path('mmitv_video_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('video_edit', { 'id': video.id }) }}">Edit</a>
+            <a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

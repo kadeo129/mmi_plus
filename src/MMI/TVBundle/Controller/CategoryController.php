@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MMI\TVBundle\Entity\Category;
 use MMI\TVBundle\Form\CategoryType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 
 class CategoryController extends Controller
@@ -79,10 +81,24 @@ class CategoryController extends Controller
         $form = $this->createDeleteForm($category);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+
+        $id=$category->getId();
+
+        $countVideos = $em
+            ->getRepository('MMITVBundle:Video')
+            ->getNbRelatedVideos($id);
+
+        if ($form->isSubmitted() && $form->isValid() && $countVideos==0)
+        {
             $em = $this->getDoctrine()->getManager();
             $em->remove($category);
             $em->flush();
+        }
+        else
+        {
+            //throw new NotFoundHttpException("Cette catégorie contient une ou plusieurs vidéos : elle ne peut pas être supprimée.");
+            $request->getSession()->getFlashBag()->add('notice', 'Une catégorie contenant des vidéos ne peut pas être supprimée.');
         }
 
         return $this->redirectToRoute('mmitv_category_index');
@@ -95,5 +111,31 @@ class CategoryController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function testAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $category = $em
+                ->getRepository('MMITVBundle:Category')
+                ->findOneBy(array('id' => $id));
+        var_dump($category);
+
+        $countVideos = $em
+            ->getRepository('MMITVBundle:Video')
+            ->getNbRelatedVideos($id);
+
+        var_dump($countVideos);
+
+        if($countVideos==0)
+        {
+            $em->remove($category);
+            $em->flush();
+        }else{
+            throw new NotFoundHttpException("Cette catégorie contient une ou plusieurs vidéos : elle ne peut pas être supprimée.");
+        }
+        return $this->render('MMITVBundle:category:test.html.twig');
+
     }
 }
