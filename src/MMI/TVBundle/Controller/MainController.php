@@ -15,7 +15,6 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        $welcome = "Bonjour, ceci est la page d'accueil";
-        return $this->render('MMITVBundle:main:index.html.twig', array('welcome' => $welcome));
+        return $this->render('MMITVBundle:main:index.html.twig');
     }
 }

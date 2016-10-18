@@ -2,7 +2,7 @@
 # src/OC/PlatformBundle/Resources/config/routing.yml
 
 mmitv_home:
-    path:    /{page}
+    path:    /
     defaults:
         _controller: MMITVBundle:Main:index
         page:    1
