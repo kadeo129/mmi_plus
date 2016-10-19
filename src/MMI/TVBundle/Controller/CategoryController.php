@@ -47,9 +47,17 @@ class CategoryController extends Controller
 
     public function showAction(Category $category)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $videos= $em
+            ->getRepository('MMITVBundle:Video')
+            ->getVideosByCategory($category->getId())
+        ;
+
         $deleteForm = $this->createDeleteForm($category);
 
         return $this->render('MMITVBundle:category:show.html.twig', array(
+            'videos'=>$videos,
             'category' => $category,
             'delete_form' => $deleteForm->createView(),
         ));
