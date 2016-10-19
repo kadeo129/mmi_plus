@@ -10,4 +10,20 @@ namespace MMI\TVBundle\Repository;
  */
 class BlocRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getOrderedBlocs($id)
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb
+            ->where('b.grid = :id')
+            ->setParameter('id',$id)
+            ->addOrderBy('b.day','ASC')
+            ->addOrderBy('b.slot','ASC')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

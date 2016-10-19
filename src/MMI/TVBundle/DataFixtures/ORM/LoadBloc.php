@@ -27,315 +27,6 @@ class BlocFixtures extends AbstractFixture
         $this->setReference(1,$grid);
         $manager->persist($grid);
         $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('2');
-        $grid->setStatus('0');
-        $this->setReference(2,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('3');
-        $grid->setStatus('0');
-        $this->setReference(3,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('4');
-        $grid->setStatus('0');
-        $this->setReference(4,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('5');
-        $grid->setStatus('0');
-        $this->setReference(5,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('6');
-        $grid->setStatus('0');
-        $this->setReference(6,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('7');
-        $grid->setStatus('0');
-        $this->setReference(7,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('8');
-        $grid->setStatus('0');
-        $this->setReference(8,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('9');
-        $grid->setStatus('0');
-        $this->setReference(9,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('10');
-        $grid->setStatus('0');
-        $this->setReference(10,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('11');
-        $grid->setStatus('0');
-        $this->setReference(11,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('12');
-        $grid->setStatus('0');
-        $this->setReference(12,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('13');
-        $grid->setStatus('0');
-        $this->setReference(13,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('14');
-        $grid->setStatus('0');
-        $this->setReference(14,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('15');
-        $grid->setStatus('0');
-        $this->setReference(15,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('16');
-        $grid->setStatus('0');
-        $this->setReference(16,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('17');
-        $grid->setStatus('0');
-        $this->setReference(17,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('18');
-        $grid->setStatus('0');
-        $this->setReference(18,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('19');
-        $grid->setStatus('0');
-        $this->setReference(19,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('20');
-        $grid->setStatus('0');
-        $this->setReference(20,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('21');
-        $grid->setStatus('0');
-        $this->setReference(21,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('22');
-        $grid->setStatus('0');
-        $this->setReference(22,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('23');
-        $grid->setStatus('0');
-        $this->setReference(23,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('24');
-        $grid->setStatus('0');
-        $this->setReference(24,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('25');
-        $grid->setStatus('0');
-        $this->setReference(25,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('26');
-        $grid->setStatus('0');
-        $this->setReference(26,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('27');
-        $grid->setStatus('0');
-        $this->setReference(27,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('28');
-        $grid->setStatus('0');
-        $this->setReference(28,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('29');
-        $grid->setStatus('0');
-        $this->setReference(29,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('30');
-        $grid->setStatus('0');
-        $this->setReference(30,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('31');
-        $grid->setStatus('0');
-        $this->setReference(31,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('32');
-        $grid->setStatus('0');
-        $this->setReference(32,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('33');
-        $grid->setStatus('0');
-        $this->setReference(33,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('34');
-        $grid->setStatus('0');
-        $this->setReference(34,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('35');
-        $grid->setStatus('0');
-        $this->setReference(35,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('36');
-        $grid->setStatus('0');
-        $this->setReference(36,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('37');
-        $grid->setStatus('0');
-        $this->setReference(37,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('38');
-        $grid->setStatus('0');
-        $this->setReference(38,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('39');
-        $grid->setStatus('0');
-        $this->setReference(39,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('40');
-        $grid->setStatus('0');
-        $this->setReference(40,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('41');
-        $grid->setStatus('0');
-        $this->setReference(41,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('42');
-        $grid->setStatus('0');
-        $this->setReference(42,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('43');
-        $grid->setStatus('0');
-        $this->setReference(43,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('44');
-        $grid->setStatus('0');
-        $this->setReference(44,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
-        $grid = new Grid();
-        $grid->setWeek('45');
-        $grid->setStatus('0');
-        $this->setReference(45,$grid);
-        $manager->persist($grid);
-        $manager->flush();
-
     }
 
     public function loadCategories(ObjectManager $manager)
@@ -379,7 +70,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('1');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -389,7 +80,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('2');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -399,7 +90,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('3');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -409,7 +100,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('4');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -419,7 +110,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('5');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -429,7 +120,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('6');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -439,7 +130,7 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
         $bloc->setSlot('7');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('1');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -449,9 +140,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('8');
+        $bloc->setSlot('1');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -459,9 +150,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Visuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('9');
+        $bloc->setSlot('2');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -469,9 +160,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Ateliers'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('10');
+        $bloc->setSlot('3');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -479,9 +170,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Actus/culture'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('11');
+        $bloc->setSlot('4');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -489,9 +180,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('After MMI'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('12');
+        $bloc->setSlot('5');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -499,9 +190,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Visuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('13');
+        $bloc->setSlot('6');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -509,9 +200,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('14');
+        $bloc->setSlot('7');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('2');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -521,9 +212,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('15');
+        $bloc->setSlot('1');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -531,9 +222,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Techno'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('16');
+        $bloc->setSlot('2');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -541,9 +232,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Ateliers'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('17');
+        $bloc->setSlot('3');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');;
         $manager->persist($bloc);
         $manager->flush();
 
@@ -551,9 +242,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Actus/culture'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('18');
+        $bloc->setSlot('4');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -561,9 +252,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('After MMI'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('19');
+        $bloc->setSlot('5');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -571,9 +262,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Visuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('20');
+        $bloc->setSlot('6');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -581,9 +272,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('21');
+        $bloc->setSlot('7');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('3');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -594,9 +285,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('22');
+        $bloc->setSlot('1');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -604,9 +295,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Visuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('23');
+        $bloc->setSlot('2');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -614,9 +305,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Ateliers'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('24');
+        $bloc->setSlot('3');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -624,9 +315,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Actus/culture'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('25');
+        $bloc->setSlot('4');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -634,9 +325,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('After MMI'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('26');
+        $bloc->setSlot('5');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -644,9 +335,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Divertissement'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('27');
+        $bloc->setSlot('6');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -654,9 +345,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Divertissement'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('28');
+        $bloc->setSlot('7');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('4');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -666,9 +357,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('29');
+        $bloc->setSlot('1');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -676,9 +367,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Techno'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('30');
+        $bloc->setSlot('2');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -686,9 +377,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Actus/culture'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('31');
+        $bloc->setSlot('3');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -696,9 +387,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Actus/culture'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('32');
+        $bloc->setSlot('4');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -706,9 +397,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('After MMI'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('33');
+        $bloc->setSlot('5');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -716,9 +407,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('34');
+        $bloc->setSlot('6');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 
@@ -726,9 +417,9 @@ class BlocFixtures extends AbstractFixture
         $bloc->setCategory($this->getReference('Administration'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s","01:30:00"));
-        $bloc->setSlot('35');
+        $bloc->setSlot('7');
         $bloc->setStatus('0');
-        $bloc->setWeeknumber('1');
+        $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
 

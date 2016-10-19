@@ -10,6 +10,8 @@ use MMI\TVBundle\Entity\Bloc;
 use MMI\TVBundle\Form\BlocType;
 use MMI\TVBundle\MMIRenew\MMIRenew;
 
+
+
 /**
  * Bloc controller.
  *
@@ -17,14 +19,23 @@ use MMI\TVBundle\MMIRenew\MMIRenew;
  */
 class BlocController extends Controller
 {
-    public function indexAction()
+    public function indexAction($week)
     {
+        $grid = array();
         $em = $this->getDoctrine()->getManager();
 
-        $blocs = $em->getRepository('MMITVBundle:Bloc')->findAll();
+        $blocs = $em->getRepository('MMITVBundle:Bloc')
+            ->getOrderedBlocs($week)
+        ;
+
+        foreach($blocs as $bloc)
+        {
+            //tableau à deux dimensions : on ajoute tous les jours à la grille, et à chaque jour on ajoute tous les créneaux de la journée
+            $grid[$bloc->getDay()][]=$bloc->getSlot();
+        }
 
         return $this->render('MMITVBundle:bloc:index.html.twig', array(
-            'blocs' => $blocs,
+            'grid' => $grid,
         ));
     }
 

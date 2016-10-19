@@ -10,9 +10,12 @@ mmitv_home:
         page: \d*
 
 mmitv_bloc_index:
-    path:   /bloc
+    path:    /bloc/{week}
     defaults:
         _controller: MMITVBundle:Bloc:index
+        week:    1
+    requirements:
+        page:    \d+
 
 mmitv_bloc_new:
     path:    /bloc/new

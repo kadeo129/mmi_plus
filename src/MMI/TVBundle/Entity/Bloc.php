@@ -43,13 +43,6 @@ class Bloc
     private $status;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="week_number", type="integer")
-     */
-    private $weekNumber;
-
-    /**
      * @ORM\ManyToMany(targetEntity="MMI\TVBundle\Entity\Video", mappedBy="blocs", cascade={"remove"})
      */
     private $videos;
@@ -65,6 +58,13 @@ class Bloc
      * @ORM\JoinColumn(name="grid", referencedColumnName="id", onDelete="CASCADE")
      */
     private $grid;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="day", type="integer")
+     */
+    private $day;
 
     /**
      * Get id
@@ -124,29 +124,6 @@ class Bloc
         return $this->status;
     }
 
-    /**
-     * Set weekNumber
-     *
-     * @param integer $weekNumber
-     *
-     * @return Bloc
-     */
-    public function setWeekNumber($weekNumber)
-    {
-        $this->weekNumber = $weekNumber;
-
-        return $this;
-    }
-
-    /**
-     * Get weekNumber
-     *
-     * @return int
-     */
-    public function getWeekNumber()
-    {
-        return $this->weekNumber;
-    }
     /**
      * Constructor
      */
@@ -259,5 +236,30 @@ class Bloc
     public function getDuration()
     {
         return $this->duration;
+    }
+
+
+    /**
+     * Set day
+     *
+     * @param integer $day
+     *
+     * @return Bloc
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+
+        return $this;
+    }
+
+    /**
+     * Get day
+     *
+     * @return integer
+     */
+    public function getDay()
+    {
+        return $this->day;
     }
 }

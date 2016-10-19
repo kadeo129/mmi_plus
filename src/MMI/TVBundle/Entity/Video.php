@@ -66,7 +66,7 @@ class Video
 
     /**
      * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Category", inversedBy="videos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, name="category", referencedColumnName="id", onDelete="CASCADE")
      */
     private $category;
 
