@@ -38,7 +38,6 @@ class BlocFixtures extends AbstractFixture
             'Ateliers',
             'Actus/culture',
             'After MMI',
-            'Techno',
             'Visuel',
             'Divertissement',
         );
@@ -422,6 +421,5 @@ class BlocFixtures extends AbstractFixture
         $bloc->setDay('5');
         $manager->persist($bloc);
         $manager->flush();
-
     }
 }
