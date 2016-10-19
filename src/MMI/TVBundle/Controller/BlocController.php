@@ -31,12 +31,12 @@ class BlocController extends Controller
         foreach($blocs as $bloc)
         {
             //tableau à deux dimensions : on ajoute tous les jours à la grille, et à chaque jour on ajoute tous les créneaux de la journée
-            $grid[$bloc->getDay()][]=$bloc->getSlot();
+            $grid[$bloc->getDay()][$bloc->getSlot()]=$bloc->getCategory()->getName();
+
         }
 
-        var_dump($grid);
         return $this->render('MMITVBundle:bloc:index.html.twig', array(
-            'grid' => $grid,
+            'grid' => $grid
         ));
     }
 
