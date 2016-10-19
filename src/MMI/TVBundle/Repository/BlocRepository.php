@@ -17,6 +17,8 @@ class BlocRepository extends \Doctrine\ORM\EntityRepository
         $qb
             ->where('b.grid = :id')
             ->setParameter('id',$id)
+            ->innerJoin('b.category','c')
+            ->addSelect('c')
             ->addOrderBy('b.day','ASC')
             ->addOrderBy('b.slot','ASC')
         ;

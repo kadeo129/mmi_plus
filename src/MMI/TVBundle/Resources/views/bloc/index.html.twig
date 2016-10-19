@@ -1,37 +1,24 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <h1>Bloc list</h1>
+    <h1>Grid</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Duration</th>
-                <th>Slot</th>
-                <th>Status</th>
-                <th>Weeknumber</th>
-                <th>Actions</th>
+                <th>Lundi</th>
+                <th>Mardi</th>
+                <th>Mercredi</th>
+                <th>Jeudi</th>
+                <th>Vendredi</th>
             </tr>
         </thead>
         <tbody>
-        {% for bloc in blocs %}
+        {% for slot in 0..6 %}
             <tr>
-                <td><a href="{{ path('mmitv_bloc_show', { 'id': bloc.id }) }}">{{ bloc.id }}</a></td>
-                <td>{{ bloc.duration|date("m/d/Y") }}</td>
-                <td>{{ bloc.slot }}</td>
-                <td>{% if bloc.status %}Yes{% else %}No{% endif %}</td>
-                <td>{{ bloc.weekNumber }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('mmitv_bloc_show', { 'id': bloc.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('mmitv_bloc_edit', { 'id': bloc.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
+                {% for day in 1..5 %}
+                    <td>{{ grid[day][slot] }}</td>
+                {% endfor %}
             </tr>
         {% endfor %}
         </tbody>
@@ -42,4 +29,5 @@
             <a href="{{ path('mmitv_bloc_new') }}">Create a new entry</a>
         </li>
     </ul>
+
 {% endblock %}

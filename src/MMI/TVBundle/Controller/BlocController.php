@@ -34,6 +34,7 @@ class BlocController extends Controller
             $grid[$bloc->getDay()][]=$bloc->getSlot();
         }
 
+        var_dump($grid);
         return $this->render('MMITVBundle:bloc:index.html.twig', array(
             'grid' => $grid,
         ));
