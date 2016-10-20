@@ -10,4 +10,19 @@ namespace MMI\TVBundle\Repository;
  */
 class GridRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getMostRecentId()
+    {
+        $qb = $this->createQueryBuilder('g');
+
+        $qb
+            ->orderBy('g.id','DESC')
+            ->setMaxResults('1')
+            ;
+
+        return $qb
+                ->getQuery()
+                ->getResult()
+        ;
+
+    }
 }

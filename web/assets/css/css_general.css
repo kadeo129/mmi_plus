@@ -12,16 +12,25 @@
     src: url("../font/rounded.ttf") format("truetype");
 }
 
+/** CSS PROVISOIRE A SUPPRIMER QUAND J'AURAI LA TIMELINE **/
 .grid
 {
 	margin-top:200px;
 	font-family: "rounded";
+	text-transform: uppercase;
 }
 
 .grid thead
 {
 	font-family: "montserrat";
 }
+
+td
+{
+	padding:20px;
+}
+
+/** CSS PROVISOIRE A SUPPRIMER QUAND J'AURAI LA TIMELINE **/
 
 p {
 	font-family: "rounded";

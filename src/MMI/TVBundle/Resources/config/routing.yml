@@ -17,6 +17,11 @@ mmitv_bloc_index:
     requirements:
         page:    \d+
 
+mmitv_bloc_test:
+    path:    /bloc/test
+    defaults:
+        _controller: MMITVBundle:Bloc:test
+
 mmitv_bloc_new:
     path:    /bloc/new
     defaults:

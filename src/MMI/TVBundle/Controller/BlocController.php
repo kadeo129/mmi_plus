@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MMI\TVBundle\Entity\Bloc;
+use MMI\TVBundle\Entity\Grid;
+use MMI\TVBundle\Repository\GridRepository;
 use MMI\TVBundle\Form\BlocType;
 use MMI\TVBundle\MMIRenew\MMIRenew;
 
@@ -19,13 +21,29 @@ use MMI\TVBundle\MMIRenew\MMIRenew;
  */
 class BlocController extends Controller
 {
-    public function indexAction($week)
+    public function indexAction()
     {
         $grid = array();
+
+        $horaires = array(
+            "1" => "8h00 - 9h30",
+            "2" => "9h30 - 11h00",
+            "3" => "11h00 - 12h30",
+            "4" => "12h30 - 14h00",
+            "5" => "14h00 - 15h30",
+            "6" => "15h30 - 17h00",
+            "7" => "17h00 - 18h30",
+        );
+
         $em = $this->getDoctrine()->getManager();
 
+        $planning = $em->getRepository('MMITVBundle:Grid')
+                        ->getMostRecentId();
+
+        $gridId = $planning[0]->getId();
+
         $blocs = $em->getRepository('MMITVBundle:Bloc')
-            ->getOrderedBlocs($week)
+            ->getOrderedBlocs($gridId)
         ;
 
         foreach($blocs as $bloc)
@@ -36,7 +54,8 @@ class BlocController extends Controller
         }
 
         return $this->render('MMITVBundle:bloc:index.html.twig', array(
-            'grid' => $grid
+            'grid' => $grid,
+            'horaires' => $horaires,
         ));
     }
 
@@ -121,5 +140,20 @@ class BlocController extends Controller
         $renew->renew($weeknumber);
         $this->get('session')->getFlashBag()->set('notice', 'Nouvelle grille générée.');
         return $this->redirectToRoute('mmitv_bloc_index');
+    }
+
+    public function testAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $planning = $em->getRepository('MMITVBundle:Grid')
+            ->getMostRecentId();
+
+        var_dump($planning);
+
+        return $this->render('MMITVBundle:bloc:test.html.twig', array(
+            'planning' => $planning
+        ));
+
     }
 }
