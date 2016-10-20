@@ -12,6 +12,17 @@
     src: url("../font/rounded.ttf") format("truetype");
 }
 
+.grid
+{
+	margin-top:200px;
+	font-family: "rounded";
+}
+
+.grid thead
+{
+	font-family: "montserrat";
+}
+
 p {
 	font-family: "rounded";
 	margin:0;
