@@ -28,11 +28,12 @@ mmitv_bloc_new:
         _controller: MMITVBundle:Bloc:new
 
 mmitv_bloc_show:
-    path:    /bloc/show/{id}
+    path:    /bloc/show/{day}/{slot}
     defaults:
         _controller: MMITVBundle:Bloc:show
     requirements:
-            id:    \d+
+            day:    \d+
+            slot:    \d+
 
 mmitv_bloc_edit:
     path:    /bloc/edit/{id}

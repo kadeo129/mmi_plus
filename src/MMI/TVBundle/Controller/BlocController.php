@@ -79,14 +79,25 @@ class BlocController extends Controller
         ));
     }
 
-    public function showAction(Bloc $bloc)
+    public function showAction($day,$slot)
     {
-        $deleteForm = $this->createDeleteForm($bloc);
+        $em = $this->getDoctrine()->getManager()->getRepository('MMITVBundle:Bloc');
+        $bloc = $em->getWithRelatedVideos($day,$slot);
+        $hours = array(
+            "1" => "8h00 - 9h30",
+            "2" => "9h30 - 11h00",
+            "3" => "11h00 - 12h30",
+            "4" => "12h30 - 14h00",
+            "5" => "14h00 - 15h30",
+            "6" => "15h30 - 17h00",
+            "7" => "17h00 - 18h30",
+        );
 
-        return $this->render('MMITVBundle:bloc:show.html.twig', array(
-            'bloc' => $bloc,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render('MMITVBundle:bloc:show.html.twig',array(
+            'bloc'=>$bloc,
+            'hours'=>$hours,
+            'day'=>$day,
+            'slot'=>$slot));
     }
 
     public function editAction(Request $request, Bloc $bloc)

@@ -1,44 +1,13 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <h1>Bloc</h1>
+    <h1>{{ hours[slot]}} - {{ bloc.category }}</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ bloc.id }}</td>
-            </tr>
-            <tr>
-                <th>Duration</th>
-                <td>{{ bloc.duration|date("m/d/Y") }}</td>
-            </tr>
-            <tr>
-                <th>Slot</th>
-                <td>{{ bloc.slot }}</td>
-            </tr>
-            <tr>
-                <th>Status</th>
-                <td>{% if bloc.status %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Weeknumber</th>
-                <td>{{ bloc.weekNumber }}</td>
-            </tr>
-        </tbody>
-    </table>
+
 
     <ul>
         <li>
-            <a href="{{ path('mmitv_bloc_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('mmitv_bloc_edit', { 'id': bloc.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+            <a href="{{ path('mmitv_home') }}">retour à la grille de programmation</a>
         </li>
     </ul>
 {% endblock %}

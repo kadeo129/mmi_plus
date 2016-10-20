@@ -28,4 +28,21 @@ class BlocRepository extends \Doctrine\ORM\EntityRepository
             ->getResult()
         ;
     }
+
+    public function getWithRelatedVideos($day,$slot)
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb
+            ->where('b.day = :day' and 'b.slot = :slot')
+            ->setParameters(array('day'=>$day,'slot'=>$slot))
+            ->innerJoin('b.videos','v')
+            ->addSelect('v')
+        ;
+
+        return $qb
+                ->getQuery()
+                ->getResult()
+        ;
+    }
 }
