@@ -32,7 +32,7 @@ class VideoType extends AbstractType
             ->add('blocs', EntityType::class, array(
                 'class'        => 'MMITVBundle:Bloc',
                 'choice_label' => 'id',
-                'multiple'     => true,
+                'multiple'     => false,
                 'expanded' => false,
             ))
         ;
