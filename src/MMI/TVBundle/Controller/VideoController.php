@@ -22,11 +22,11 @@ class VideoController extends Controller
         ));
     }
 
-    public function newAction(Request $request, $blocId)
+    public function newAction(Request $request)
     {
         $video = new Video();
         $form = $this->createForm('MMI\TVBundle\Form\VideoType', $video);
-        $form->get('blocs')->setData($blocId);
+       // $form->get('blocs')->setData($blocId);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

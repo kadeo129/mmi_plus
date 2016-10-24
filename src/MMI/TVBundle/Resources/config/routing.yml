@@ -117,11 +117,9 @@ mmitv_video_index:
         _controller: MMITVBundle:Video:index
 
 mmitv_video_new:
-    path:    /video/new/{blocId}
+    path:    /video/new
     defaults:
         _controller: MMITVBundle:Video:new
-    requirements:
-                blocId:    \d+
 
 mmitv_video_show:
     path:    /video/show/{id}
