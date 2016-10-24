@@ -467,6 +467,7 @@ class BlocFixtures extends AbstractFixture
         $video->setDate(new \DateTime());
         $video->setPoster('http://www.informaction.info/sites/default/files/maxresdefault_52.jpg');
         $video->setCategory($this->getReference('Visuel'));
+        $
         $manager->persist($video);
         $manager->flush();
 
