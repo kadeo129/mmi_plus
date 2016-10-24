@@ -34,15 +34,17 @@ class BlocRepository extends \Doctrine\ORM\EntityRepository
         $qb = $this->createQueryBuilder('b');
 
         $qb
-            ->where('b.day = :day' and 'b.slot = :slot')
+            ->where('b.day = :day AND b.slot = :slot')
             ->setParameters(array('day'=>$day,'slot'=>$slot))
-            ->innerJoin('b.videos','v')
+            ->leftJoin('b.videos','v')
             ->addSelect('v')
+            ->leftJoin('b.category','c')
+            ->addSelect('c')
         ;
 
         return $qb
                 ->getQuery()
-                ->getResult()
+                ->getSingleResult()
         ;
     }
 }

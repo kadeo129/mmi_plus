@@ -23,10 +23,12 @@
                             </td>
                             {% for day in 1..5 %}
                                 <td>
+                                    <a href="{{ path('mmitv_bloc_show', { 'slot': slot, 'day':day }) }}">
                                     {{ grid[day][slot]}}
                                     {% for category in slot %}
-                                        {{ category.name }}
+                                       {{ category.name }}
                                     {% endfor %}
+                                    </a>
                                 </td>
                             {% endfor %}
                         </tr>
@@ -36,6 +38,5 @@
             </div>
         </div>
     </div>
-    
 
 {% endblock %}

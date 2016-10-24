@@ -41,12 +41,12 @@ class MainController extends Controller
         {
             //tableau à deux dimensions : on ajoute tous les jours à la grille, et à chaque jour on ajoute tous les créneaux de la journée
             $grid[$bloc->getDay()][$bloc->getSlot()]=$bloc->getCategory()->getName();
-
         }
 
         return $this->render('MMITVBundle:main:index.html.twig', array(
             'grid' => $grid,
             'hours' => $hours,
+            'blocs' => $blocs
         ));
     }
 }

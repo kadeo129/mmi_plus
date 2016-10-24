@@ -1,9 +1,30 @@
 {% extends '::layout.html.twig' %}
 
 {% block body %}
-    <h1>{{ hours[slot]}} - {{ bloc.category }}</h1>
+    <h1>{{ hours[slot]}} - {{ bloc.category.name }}</h1>
 
+    {% if bloc.videos is empty %}
+        <p>Il n'y a pas encore de vidéo dans ce créneau.</p>
+    {% else %}
+        {% for video in bloc.videos %}
+            <div class="row">
+                <div class="container">
+                    <div class="col-6-md">
+                        {{ video.poster }}
+                    </div>
+                    <div class="col-6-md">
+                        <p>{{ video.title }}</p>
+                        <p>{{ video.date }}</p>
+                        <p>{{ video.duration }}</p>
+                        <p>{{ video.description }}</p>
+                        <p>{{ video.url }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
 
+    <button><a href="{{ path('mmitv_video_new', {'blocId':bloc.id}) }}">Ajouter une vidéo</a></button>
 
     <ul>
         <li>
