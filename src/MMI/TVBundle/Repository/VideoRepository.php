@@ -42,4 +42,21 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
             ->getResult()
             ;
     }
+
+    public function getVideoWithBlocs($id)
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb
+            ->where('v.id = :id')
+            ->setParameter('id',$id)
+            ->leftJoin('v.blocs','b')
+            ->addSelect('b');
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getSingleResult()
+            ;
+    }
 }

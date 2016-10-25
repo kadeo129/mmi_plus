@@ -9,15 +9,19 @@
         {% for video in bloc.videos %}
             <div class="row">
                 <div class="container">
-                    <div class="col-6-md">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         {{ video.poster }}
                     </div>
-                    <div class="col-6-md">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                         <p>{{ video.title }}</p>
-                        <p>{{ video.date }}</p>
-                        <p>{{ video.duration }}</p>
+                        <p>{{ video.date|date("m/d/Y") }}</p>
+                        <p>{{ video.date|date("i:s") }}</p>
                         <p>{{ video.description }}</p>
                         <p>{{ video.url }}</p>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-4">
+                        <p><a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer</a></p>
+                        <p><a href="{{ path('mmitv_video_softdelete', { 'id': video.id }) }}">Supprimer de la grille</a></p>
                     </div>
                 </div>
             </div>

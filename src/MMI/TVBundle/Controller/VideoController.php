@@ -96,4 +96,18 @@ class VideoController extends Controller
             ->getForm()
         ;
     }
+
+    public function softdeleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $video = $em->getRepository('MMITVBundle:Video')->getVideoWithBlocs($id);
+        $blocs = $video->getBlocs();
+        foreach($blocs as $bloc)
+        {
+            $video->removeBloc($bloc);
+        }
+        $em->flush();
+        return $this->redirectToRoute('mmitv_home');
+
+    }
 }

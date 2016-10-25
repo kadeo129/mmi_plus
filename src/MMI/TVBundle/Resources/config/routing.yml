@@ -142,6 +142,13 @@ mmitv_video_delete:
     requirements:
             id:    \d+
 
+mmitv_video_softdelete:
+    path:    /video/softdelete/{id}
+    defaults:
+        _controller: MMITVBundle:Video:softdelete
+    requirements:
+            id:    \d+
+
 mmitv_category_test:
     path:    /category/test/{id}
     defaults:
