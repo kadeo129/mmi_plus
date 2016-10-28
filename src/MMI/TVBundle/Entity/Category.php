@@ -39,6 +39,13 @@ class Category
     private $blocs;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="class", type="string", length=255)
+     */
+    private $class;
+
+    /**
      * Get id
      *
      * @return int
@@ -146,5 +153,29 @@ class Category
     public function getBlocs()
     {
         return $this->blocs;
+    }
+
+    /**
+     * Set class
+     *
+     * @param string $class
+     *
+     * @return Category
+     */
+    public function setClass($class)
+    {
+        $this->class = $class;
+
+        return $this;
+    }
+
+    /**
+     * Get class
+     *
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
     }
 }

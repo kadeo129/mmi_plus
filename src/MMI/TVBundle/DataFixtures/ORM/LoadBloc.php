@@ -26,21 +26,22 @@ class BlocFixtures extends AbstractFixture
         $grid = new Grid();
         $grid->setWeek('1');
         $grid->setStatus('0');
-        $this->setReference(1, $grid);
         $manager->persist($grid);
+        $this->setReference(1, $grid);
         $manager->flush();
+
     }
 
     public function loadCategories(ObjectManager $manager)
     {
         // Liste des noms de catégorie à ajouter
         $names = array(
-            'Administration',
+            'Graphisme',
             'Techno',
             'Ateliers',
             'Actus/culture',
             'After MMI',
-            'Visuel',
+            'Audiovisuel',
             'Divertissement',
         );
 
@@ -48,10 +49,35 @@ class BlocFixtures extends AbstractFixture
             // On crée la catégorie
             $category = new Category();
             $category->setName($name);
-            $this->setReference($name, $category);
+            switch($name)
+            {
+                case 'Graphisme':
+                    $category->setClass('graph');
+                    break;
+                case 'Techno':
+                    $category->setClass('techno');
+                    break;
+                case 'Ateliers':
+                    $category->setClass('atelier');
+                    break;
+                case 'Actus/culture':
+                    $category->setClass('actu');
+                    break;
+                case 'After MMI':
+                    $category->setClass('after');
+                    break;
+                case 'Audiovisuel':
+                    $category->setClass('visuel');
+                    break;
+                case 'Divertissement':
+                    $category->setClass('divert');
+                    break;
+            }
 
             // On la persiste
             $manager->persist($category);
+
+            $this->setReference($name, $category);
         }
 
         // On déclenche l'enregistrement de toutes les catégories
@@ -65,7 +91,7 @@ class BlocFixtures extends AbstractFixture
         // Lundi
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('1');
@@ -125,7 +151,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('7');
@@ -137,7 +163,7 @@ class BlocFixtures extends AbstractFixture
         // Mardi
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('1');
@@ -147,7 +173,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Visuel'));
+        $bloc->setCategory($this->getReference('Audiovisuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('2');
@@ -187,7 +213,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Visuel'));
+        $bloc->setCategory($this->getReference('Audiovisuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('6');
@@ -197,7 +223,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('7');
@@ -209,7 +235,7 @@ class BlocFixtures extends AbstractFixture
         // Mercredi
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('1');
@@ -259,7 +285,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Visuel'));
+        $bloc->setCategory($this->getReference('Audiovisuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('6');
@@ -269,7 +295,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('7');
@@ -282,7 +308,7 @@ class BlocFixtures extends AbstractFixture
         // Jeudi
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('1');
@@ -292,7 +318,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Visuel'));
+        $bloc->setCategory($this->getReference('Audiovisuel'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('2');
@@ -354,7 +380,7 @@ class BlocFixtures extends AbstractFixture
         // Vendredi
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('1');
@@ -404,7 +430,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('6');
@@ -414,7 +440,7 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
 
         $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Administration'));
+        $bloc->setCategory($this->getReference('Graphisme'));
         $bloc->setGrid($this->getReference(1));
         $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
         $bloc->setSlot('7');
@@ -455,7 +481,7 @@ class BlocFixtures extends AbstractFixture
         $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
         $video->setDate(new \DateTime());
         $video->setPoster('https://afremov.com/image.php?type=P&id=17678');
-        $video->setCategory($this->getReference('Visuel'));
+        $video->setCategory($this->getReference('Audiovisuel'));
         $manager->persist($video);
         $manager->flush();
 
@@ -466,8 +492,7 @@ class BlocFixtures extends AbstractFixture
         $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
         $video->setDate(new \DateTime());
         $video->setPoster('http://www.informaction.info/sites/default/files/maxresdefault_52.jpg');
-        $video->setCategory($this->getReference('Visuel'));
-        $
+        $video->setCategory($this->getReference('Audiovisuel'));
         $manager->persist($video);
         $manager->flush();
 

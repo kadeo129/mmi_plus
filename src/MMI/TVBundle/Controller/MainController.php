@@ -16,6 +16,7 @@ class MainController extends Controller
     public function indexAction()
     {
         $grid = array();
+        $cell = array();
         $em = $this->getDoctrine()->getManager();
 
         $hours = array(
@@ -40,7 +41,7 @@ class MainController extends Controller
         foreach($blocs as $bloc)
         {
             //tableau à deux dimensions : on ajoute tous les jours à la grille, et à chaque jour on ajoute tous les créneaux de la journée
-            $grid[$bloc->getDay()][$bloc->getSlot()]=$bloc->getCategory()->getName();
+            $grid[$bloc->getDay()][$bloc->getSlot()]=array('name'=>$bloc->getCategory()->getName(),'class'=>$bloc->getCategory()->getClass());
         }
 
         return $this->render('MMITVBundle:main:index.html.twig', array(
