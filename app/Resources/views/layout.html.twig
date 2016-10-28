@@ -19,16 +19,6 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-
-        <!-- Script JS !-->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js')  }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js')  }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.mixitup.min.js')  }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/form-validation.js')  }}"></script>
-
-
-
         <!--  CSS MMI_PLUS  !-->
 
         <link rel="stylesheet" href="{{ asset('assets/css/css_ajoutyoutube.css')  }}">
@@ -39,6 +29,14 @@
         <link rel="stylesheet" href="{{ asset('assets/css/css_profil.css')  }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css')  }}">
         <link rel="stylesheet" href="{{ asset('assets/css/css_general.css')  }}">
+    {% endblock %}
+    {% block script %}
+        <!-- Script JS !-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js')  }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js')  }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.mixitup.min.js')  }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/form-validation.js')  }}"></script>
     {% endblock %}
 
 
