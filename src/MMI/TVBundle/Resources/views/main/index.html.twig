@@ -7,7 +7,6 @@
 {% block body %}
     <div class="biblio col-md-9 col-xs-12">
         <table cellspacing="3">
-            <thead>
             <tr class="entree">
                 <td class="change">
                     <a href="precedent.php"><h1> < </h1></a><a href="suivant.php"><h1> > </h1></a>
@@ -18,8 +17,6 @@
                 <td>J</td>
                 <td>V</td>
             </tr>
-            </thead>
-            <tbody>
             {% for slot in 1..7 %}
                 <tr>
                     <td class="entree">
@@ -28,23 +25,22 @@
                     {% for day in 1..5 %}
                         <td class="{{ grid[day][slot]['class']}}{% for category in slot %}{{ category.class }}{% endfor %}">
                             <div>
-                                <a href="{{ path('mmitv_bloc_show', { 'slot': slot, 'day':day }) }}">
+                                <h1>
                                     {{ grid[day][slot]['name']}}
                                     {% for category in slot %}
-                                        <h1>{{ category.name }}</h1>
+                                        {{ category.name }}
                                     {% endfor %}
-                                </a>
+                                </h1>
                                 <p>7 vidéos</p>
                             </div>
                             <div class="hover">
-                                <a href="1"><img src="{{ asset('assets/css/i.png')  }}" alt="1" width="25%"></a><br>
-                                <a href="+"><img src="{{ asset('assets/css/plus.png')  }}" alt="+" width="25%"></a>
+                                <a href="{{ path('mmitv_bloc_show', { 'slot': slot, 'day':day }) }}"><img src="{{ asset('assets/css/i.png')  }}" alt="1" width="25%"></a><br>
+                                <a href="{{ path('mmitv_bloc_show', { 'slot': slot, 'day':day }) }}"><img src="{{ asset('assets/css/plus.png')  }}" alt="+" width="25%"></a>
                             </div>
                         </td>
                     {% endfor %}
                 </tr>
             {% endfor %}
-            </tbody>
         </table>
     </div>
 

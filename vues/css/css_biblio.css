@@ -1,0 +1,77 @@
+.biblio {
+	float:right;
+	padding-bottom: 30px;
+    max-height: calc(100vh - 60px);
+    overflow-y:scroll;
+}
+
+.tri {
+	margin: 30px 0;
+}
+
+.tri ul {
+	display: flex;
+    justify-content: space-around;
+    list-style: none;
+    position: relative; 
+    padding: 0;
+}
+
+.tri #magic { 
+	position: absolute; 
+   background-color: #7ee4d7;
+	z-index: -1; 
+}
+
+.tri h1 { 
+	padding: 0px 20px;
+}
+
+.tri h1:hover {
+	color:white !important;
+	transition:0.5s;
+	cursor: pointer;
+}
+
+.actual h1 { 
+	color: black; 
+	transition:0.5s;
+
+}
+ 
+.list .portfolio {
+	width:23%;
+	margin:1%;
+	display:none;
+	float:left;
+	overflow:hidden;
+}
+
+.portfolio img {
+	max-width:100%;
+	position: relative;
+	top:0;		
+}
+
+	
+
+
+
+/*  #Mobile (Portrait) - Note: Design for a width of 320px */
+@media only screen and (max-width: 767px) {
+
+	.list .portfolio {
+		width:48%;
+		margin:1%;
+	}		
+
+}
+
+
+#list .portfolio {
+	width:23%;
+	margin:1%;
+	display:none;
+	float:left;
+	overflow:hidden;
+}
