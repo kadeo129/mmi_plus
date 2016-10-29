@@ -10,9 +10,14 @@ mmitv_home:
         page: \d*
 
 mmitv_faq:
-    path:    faq
+    path:    /faq
     defaults:
         _controller: MMITVBundle:Main:faq
+
+mmitv_biblio:
+    path:    /biblio
+    defaults:
+        _controller: MMITVBundle:Main:biblio
 
 mmitv_bloc_index:
     path:    /bloc/{week}

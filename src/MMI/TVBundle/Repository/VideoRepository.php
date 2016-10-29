@@ -59,4 +59,19 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleResult()
             ;
     }
+
+    public function getVideosWithCategory()
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb
+            ->leftJoin('v.category','c')
+            ->addSelect('c');
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

@@ -19,9 +19,6 @@
 
 	<?php include 'header.php'; ?>
 
-
-
-
 	<div class="biblio col-md-9 col-xs-12">
 
 		<nav class="tri hidden-xs hidden-ms">   
@@ -33,13 +30,13 @@
 				<li><h1 class="filter" data-filter=".ateliers">ateliers</h1></li>
 				<li><h1 class="filter" data-filter=".fun">fun</h1></li>
 				<li><h1 class="filter" data-filter=".aftermmi">after mmi</h1></li>
-		  	</ul> 
+		  	</ul>
 		</nav>
 
 
 <!--															//////////// NE MARCHE PAS - RESPONSIVE DU MENU EN DROPDOWN
 
- 		<div class="form-group tri hidden-lg hidden-md">	
+ 		<div class="form-group tri hidden-lg hidden-md">
 			<label><h1><span>></span> Trier par:</h1></label>
 				<select class="form-control noborder" id="triul" onchange="jQuery('#triul').mixItUp('filter', this.value);">
 				    <option value=".all">Tous</option>

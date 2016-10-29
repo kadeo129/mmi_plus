@@ -1,0 +1,41 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }} Bibliothèque{% endblock %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_biblio.css')  }}">
+{% endblock %}
+{% block body %}
+
+    <div class="biblio col-md-9 col-xs-12">
+
+        <nav class="tri hidden-xs hidden-ms">
+            <ul id="triul">
+                <li class="actual"><h1 class="filter" data-filter=".all">tous</h1></li>
+                <li><h1 class="filter" data-filter=".actu">actus</h1></li>
+                <li><h1 class="filter" data-filter=".graph">graphisme</h1></li>
+                <li><h1 class="filter" data-filter=".visuel">audiovisuel</h1></li>
+                <li><h1 class="filter" data-filter=".techno">techno</h1></li>
+                <li><h1 class="filter" data-filter=".atelier">ateliers</h1></li>
+                <li><h1 class="filter" data-filter=".divert">fun</h1></li>
+                <li><h1 class="filter" data-filter=".after">after mmi</h1></li>
+            </ul>
+        </nav>
+
+        <div class="list col-xs-12">
+            {% for video in videos %}
+                <div class="portfolio actus all" data-cat=".{{ video.category.class }}" style="{height:100px; width:100px;}">
+                    {{ video.title }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/js/biblio.js')  }}"></script>
+    <script type="text/javascript">
+        $("#biblioa").addClass("current");
+    </script>
+{% endblock %}

@@ -21,14 +21,13 @@
 
         <!--  CSS MMI_PLUS  !-->
 
-        <link rel="stylesheet" href="{{ asset('assets/css/css_ajoutyoutube.css')  }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/css_apercu.css')  }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/css_biblio.css')  }}">
-
-        <link rel="stylesheet" href="{{ asset('assets/css/css_navbar.css')  }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/css_profil.css')  }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css')  }}">
         <link rel="stylesheet" href="{{ asset('assets/css/css_general.css')  }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/css_navbar.css')  }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/css_apercu.css')  }}">
+        {# <link rel="stylesheet" href="{{ asset('assets/css/style.css')  }}"> #}
+        <link rel="stylesheet" href="{{ asset('assets/css/css_ajoutyoutube.css')  }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/css_profil.css')  }}">
+
     {% endblock %}
     {% block script %}
         <!-- Script JS !-->
@@ -52,7 +51,7 @@
             </a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><div id="biblioa"><div id="biblio"></div></div></a></li>
+            <li><a href="{{ path('mmitv_biblio')}}"><div id="biblioa"><div id="biblio"></div></div></a></li>
             <li><a href="{{ path('mmitv_home')}}"><div id="timelinea"><div id="timeline"></div></div></a></li>
             <li class="deconav">
                 <a href="#"><div id="photoplus"><div id="photoprofil"></div></div><p id="prenom" class="hidden-xs">Valentin</p></a>

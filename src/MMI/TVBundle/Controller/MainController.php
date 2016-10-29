@@ -16,7 +16,7 @@ class MainController extends Controller
     public function indexAction()
     {
         $grid = array();
-        $cell = array();
+
         $em = $this->getDoctrine()->getManager();
 
         $hours = array(
@@ -54,5 +54,22 @@ class MainController extends Controller
     public function faqAction()
     {
         return $this->render('MMITVBundle:main:faq.html.twig');
+    }
+
+    public function biblioAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $videos = $em->getRepository('MMITVBundle:Video')
+        ->getVideosWithCategory();
+
+        foreach($videos as $video)
+        {
+            $video->getCategory();
+        }
+
+        return $this->render('MMITVBundle:main:biblio.html.twig',array('videos'=>$videos));
+
+
     }
 }
