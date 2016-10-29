@@ -9,6 +9,11 @@ mmitv_home:
     requirements:
         page: \d*
 
+mmitv_faq:
+    path:    faq
+    defaults:
+        _controller: MMITVBundle:Main:faq
+
 mmitv_bloc_index:
     path:    /bloc/{week}
     defaults:
@@ -162,4 +167,6 @@ mmitv_bloc_test2:
         _controller: MMITVBundle:Bloc:test2
     requirements:
             id:    \d+
+
+
 

@@ -50,4 +50,9 @@ class MainController extends Controller
             'blocs' => $blocs
         ));
     }
+
+    public function faqAction()
+    {
+        return $this->render('MMITVBundle:main:faq.html.twig');
+    }
 }
