@@ -187,16 +187,13 @@ class MMIRenew
 
                 $category = $em->getRepository('MMITVBundle:Category')
                     ->findOneByName($name);
-
                 $bloc->setCategory($category);
-
                 $bloc->setGrid($newGrid);
                 $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
                 $bloc->setSlot($j);
                 $bloc->setStatus('0');
                 $bloc->setDay($i);
                 $em->persist($bloc);
-                $em->flush();
             }
         }
 
