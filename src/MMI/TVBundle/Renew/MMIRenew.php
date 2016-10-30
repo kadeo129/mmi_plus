@@ -54,7 +54,142 @@ class MMIRenew
             for($j = 1; $j <= 7; $j++)
             {
                 $bloc = new Bloc();
-                //$bloc->setCategory();
+
+                // Lundi
+
+                if($i == 1 and $j == 1)
+                {
+                    $name = 'Graphisme';
+                }elseif($i == 1 and $j == 2)
+                {
+                    $name = 'Techno';
+                }elseif($i == 1 and $j == 3)
+                {
+                    $name = 'Ateliers';
+                }elseif($i == 1 and $j == 4)
+                {
+                    $name = 'Actus/Culture';
+                }elseif($i == 1 and $j == 5)
+                {
+                    $name = 'After MMI';
+                }elseif($i == 1 and $j == 6)
+                {
+                    $name = 'Audiovisuel';
+                }elseif($i == 1 and $j == 7)
+                {
+                    $name = 'Divertissement';
+                }
+
+                // Mardi
+
+                elseif($i == 2 and $j == 1)
+                {
+                    $name = 'Graphisme';
+                }elseif($i == 2 and $j == 2)
+                {
+                    $name = 'Audiovisuel';
+                }elseif($i == 2 and $j == 3)
+                {
+                    $name = 'Ateliers';
+                }elseif($i == 2 and $j == 4)
+                {
+                    $name = 'Actus/Culture';
+                }elseif($i == 2 and $j == 5)
+                {
+                    $name = 'After MMI';
+                }elseif($i == 2 and $j == 6)
+                {
+                    $name = 'Audiovisuel';
+                }elseif($i == 2 and $j == 7)
+                {
+                    $name = 'Graphisme';
+                }
+
+                // Mercredi
+
+                elseif($i == 3 and $j == 1)
+                {
+                    $name = 'Graphisme';
+                }elseif($i == 3 and $j == 2)
+                {
+                    $name = 'Techno';
+                }elseif($i == 3 and $j == 3)
+                {
+                    $name = 'Ateliers';
+                }elseif($i == 3 and $j == 4)
+                {
+                    $name = 'Actus/Culture';
+                }elseif($i == 3 and $j == 5)
+                {
+                    $name = 'After MMI';
+                }elseif($i == 3 and $j == 6)
+                {
+                    $name = 'Audiovisuel';
+                }elseif($i == 3 and $j == 7)
+                {
+                    $name = 'Graphisme';
+                }
+
+                // Jeudi
+
+                elseif($i == 4 and $j == 1)
+                {
+                    $name = 'Graphisme';
+                }elseif($i == 4 and $j == 2)
+                {
+                    $name = 'Audiovisuel';
+                }elseif($i == 4 and $j == 3)
+                {
+                    $name = 'Ateliers';
+                }elseif($i == 4 and $j == 4)
+                {
+                    $name = 'Actus/Culture';
+                }elseif($i == 4 and $j == 5)
+                {
+                    $name = 'After MMI';
+                }elseif($i == 4 and $j == 6)
+                {
+                    $name = 'Divertissement';
+                }elseif($i == 4 and $j == 7)
+                {
+                    $name = 'Divertissement';
+                }
+
+                // Vendredi
+
+                elseif($i == 5 and $j == 1)
+                {
+                    $name = 'Graphisme';
+                }elseif($i == 5 and $j == 2)
+                {
+                    $name = 'Techno';
+                }elseif($i == 5 and $j == 3)
+                {
+                    $name = 'Actus/Culture';
+                }elseif($i == 5 and $j == 4)
+                {
+                    $name = 'Actus/Culture';
+                }elseif($i == 5 and $j == 5)
+                {
+                    $name = 'After MMI';
+                }elseif($i == 5 and $j == 6)
+                {
+                    $name = 'Graphisme';
+                }elseif($i == 5 and $j == 7)
+                {
+                    $name = 'Graphisme';
+                }
+
+                else
+                {
+                    $name = null;
+                }
+
+                $category = $em->getRepository('MMITVBundle:Category')
+                    ->findOneByName($name);
+
+                $bloc->setCategory($category);
+
                 $bloc->setGrid($newGrid);
                 $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
                 $bloc->setSlot($j);
