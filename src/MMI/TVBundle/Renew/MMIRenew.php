@@ -26,6 +26,19 @@ class MMIRenew
         $this->em = $em;
     }
 
+
+    //Valider la grille actuelle
+    public function validateGrid($id)
+    {
+        $em = $this->getEm();
+
+        $grid = $em->getRepository('MMITVBundle:Grid')
+                    ->findOneById($id);
+        $grid->setStatus(true);
+        $em->flush();
+    }
+
+    // Créer une nouvelle grille
     public function createNewGrid()
     {
         // Appel de l'EntityManager
@@ -200,6 +213,7 @@ class MMIRenew
         $em->flush();
     }
 
+    //Supprimer les grilles de plus de deux semaines
     public function purgeGrids()
     {
         // Appel de l'EntityManager

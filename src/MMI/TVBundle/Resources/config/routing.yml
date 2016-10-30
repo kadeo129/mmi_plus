@@ -173,10 +173,12 @@ mmitv_bloc_test2:
     requirements:
             id:    \d+
 
-mmitv_main_renew:
-    path:    /renew
+mmi_tv_renew:
+    path:    /renew/{id}
     defaults:
         _controller: MMITVBundle:Main:renew
+    requirements:
+            id:    \d+
 
 
 

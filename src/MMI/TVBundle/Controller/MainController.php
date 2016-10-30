@@ -47,7 +47,8 @@ class MainController extends Controller
         return $this->render('MMITVBundle:main:index.html.twig', array(
             'grid' => $grid,
             'hours' => $hours,
-            'blocs' => $blocs
+            'blocs' => $blocs,
+            'planning'=>$planning
         ));
     }
 
@@ -72,15 +73,21 @@ class MainController extends Controller
 
     }
 
-    public function renewAction(Request $request)
+    public function renewAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $renew = new MMIRenew($em);
 
+        // Etape 1 : validation de la grille actuelle
+        $renew->validateGrid($id);
+
+        // Etape 2 : création d'une nouvelle grille pour la semaine suivante
         $renew->createNewGrid();
+
+        // Etape 3 : suppression des grilles vieilles de plus de deux semaines
         $renew->purgeGrids();
 
         $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
-        return $this->render('MMITVBundle:main:renew.html.twig');
+        return $this->redirectToRoute('mmitv_home');
     }
 }

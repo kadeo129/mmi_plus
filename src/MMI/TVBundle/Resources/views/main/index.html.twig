@@ -5,6 +5,23 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_time.css')  }}">
 {% endblock %}
 {% block body %}
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-9 col-xs-12">
+                <button><a href="{{ path('mmi_tv_renew', {'id': planning.id}) }}">Valider la grille</a></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-9 col-xs-12">
+                <h1>Semaine {{ planning.week }}</h1>
+            </div>
+        </div>
+    </div>
+
     <div class="biblio col-md-9 col-xs-12">
         <table cellspacing="3">
             <tr class="entree">
@@ -188,14 +205,9 @@
 
             /* Kick IE into gear */
             $(".actual h1").mouseenter();
-
-
-
         });
 
-
         $(function () {
-
             var filterList = {
                 init: function () {
 
@@ -208,14 +220,11 @@
                         load: {
                             filter: '.all'
                         }
-
                     });
                 }
             };
-
             filterList.init();
         });
-
 
     </script>
 {% endblock %}

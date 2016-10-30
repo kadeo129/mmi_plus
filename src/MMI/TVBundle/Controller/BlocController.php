@@ -10,7 +10,6 @@ use MMI\TVBundle\Entity\Bloc;
 use MMI\TVBundle\Entity\Grid;
 use MMI\TVBundle\Repository\GridRepository;
 use MMI\TVBundle\Form\BlocType;
-use MMI\TVBundle\MMIRenew\MMIRenew;
 
 
 
@@ -150,15 +149,6 @@ class BlocController extends Controller
         ;
     }
 
-    public function renewAction($weeknumber)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $renew = new MMIRenew($em);
-        $renew->renew($weeknumber);
-        $this->get('session')->getFlashBag()->set('notice', 'Nouvelle grille générée.');
-        return $this->redirectToRoute('mmitv_bloc_index');
-    }
-
     public function testAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -196,6 +186,5 @@ class BlocController extends Controller
             'hours'=>$hours,
             'day'=>$day,
             'slot'=>$slot));
-
     }
 }
