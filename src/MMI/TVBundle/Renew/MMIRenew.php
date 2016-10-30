@@ -1,9 +1,10 @@
 <?php
 
-namespace MMI\TVBundle\MMIRenew;
+namespace MMI\TVBundle\Renew;
 
 use MMI\TVBundle\Entity\Bloc as Bloc;
 use MMI\TVBundle\Entity\Grid as Grid;
+use MMI\TVBundle\Entity\Category as Category;
 use Doctrine\ORM\EntityManager;
 
 class MMIRenew
@@ -25,27 +26,43 @@ class MMIRenew
         $this->em = $em;
     }
 
-    public function calculAge(Bloc $bloc)
+    public function createNewGrid()
     {
-        $tz  = new \DateTimeZone('Europe/Paris');
-        $age = \DateTime::createFromFormat('Y-m-d H:i:s', $advert->getDate()->format('Y-m-d H:i:s'), $tz)->diff(new \DateTime('now', $tz))->days;
-        return $age;
-        //var_dump($advert->getDate()->format('Y-m-d H:i:s'));
-    }
-
-    public function renew($weeknumber)
-    {
+        // Appel de l'EntityManager
         $em = $this->getEm();
-        $adverts=$em->getRepository('OCPlatformBundle:Advert')
-            ->findByNbApplications(0);
-        foreach($adverts as $advert)
+
+        // Création d'une nouvelle grille
+        $lastGrid = $em ->getRepository('MMITVBundle:Grid')
+                        ->getMostRecentId();
+
+        if(isset($lastGrid))
         {
-            $age = $this->calculAge($advert);
-            if($age > $days)
-            {
-                $em->remove($advert);
-                $em->flush();
-            }
+            $weekNumber = ($lastGrid->getWeek()+1);
+
         }
+        else
+        {
+            $weekNumber = 1;
+        }
+
+        $newGrid = new Grid();
+        $newGrid->setStatus(false);
+        $newGrid->setWeek($weekNumber);
+        $em->persist($newGrid);
+        $em->flush();
+
+        // Création des 35 nouveaux blocs de la grille
+        $bloc = new Bloc();
+        $bloc->setCategory($this->getReference('Graphisme'));
+        $bloc->setGrid($this->getReference(1));
+        $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
+        $bloc->setSlot('1');
+        $bloc->setStatus('0');
+        $bloc->setDay('1');
+        $manager->persist($bloc);
+        $manager->flush();
+
+
+
     }
 }

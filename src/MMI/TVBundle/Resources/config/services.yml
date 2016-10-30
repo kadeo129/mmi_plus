@@ -3,7 +3,6 @@ services:
 #        class: MMI\TVBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
 
-    mmitv.renew.grid:
-        class: MMI\TVBundle\MMIRenew\MMIRenew
-        argument:
-            - "@doctrine.orm.entity_manager"
+    mmi_tv.renew.grid:
+        class: MMI\TVBundle\Renew\MMIRenew
+        arguments: ["@request_stack", "@doctrine.orm.entity_manager"]

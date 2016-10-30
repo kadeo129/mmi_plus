@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MMI\TVBundle\Entity\Bloc;
 use MMI\TVBundle\Form\BlocType;
-use MMI\TVBundle\MMIRenew\MMIRenew;
+use MMI\TVBundle\Renew\MMIRenew;
 
 
 class MainController extends Controller
@@ -32,7 +32,7 @@ class MainController extends Controller
         $planning = $em->getRepository('MMITVBundle:Grid')
             ->getMostRecentId();
 
-        $gridId = $planning[0]->getId();
+        $gridId = $planning->getId();
 
         $blocs = $em->getRepository('MMITVBundle:Bloc')
             ->getOrderedBlocs($gridId)
@@ -70,6 +70,14 @@ class MainController extends Controller
 
         return $this->render('MMITVBundle:main:biblio.html.twig',array('videos'=>$videos));
 
+    }
 
+    public function renewAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $renew = new MMIRenew($em);
+        $renew->createNewGrid();
+        $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
+        return $this->redirectToRoute('mmitv_home');
     }
 }
