@@ -33,7 +33,7 @@ class MMIRenew
 
         // Création d'une nouvelle grille
         $lastGrid = $em ->getRepository('MMITVBundle:Grid')
-                        ->getMostRecentId();
+                        ->getMostRecentId(1);
 
         if(isset($lastGrid))
         {
@@ -196,8 +196,27 @@ class MMIRenew
                 $em->persist($bloc);
             }
         }
-
         $em->persist($newGrid);
         $em->flush();
+    }
+
+    public function purgeGrids()
+    {
+        // Appel de l'EntityManager
+        $em = $this->getEm();
+
+        $mostRecentGrid = $em->getRepository('MMITVBundle:Grid')
+                                ->getMostRecentId(1);
+        $limit = ($mostRecentGrid->getWeek()-4);
+
+        $oldGrids = $em->getRepository('MMITVBundle:Grid')
+                        ->getOldGrids($limit);
+
+        foreach($oldGrids as $oldGrid)
+        {
+            $em->remove($oldGrid);
+            $em->flush();
+        }
+
     }
 }

@@ -30,7 +30,7 @@ class MainController extends Controller
         );
 
         $planning = $em->getRepository('MMITVBundle:Grid')
-            ->getMostRecentId();
+            ->getMostRecentId(1);
 
         $gridId = $planning->getId();
 
@@ -78,8 +78,9 @@ class MainController extends Controller
         $renew = new MMIRenew($em);
 
         $renew->createNewGrid();
+        $renew->purgeGrids();
 
         $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
-        return $this->redirectToRoute('mmitv_faq');
+        return $this->render('MMITVBundle:main:renew.html.twig');
     }
 }
