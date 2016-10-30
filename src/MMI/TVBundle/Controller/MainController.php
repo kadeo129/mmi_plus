@@ -76,8 +76,10 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $renew = new MMIRenew($em);
+
         $renew->createNewGrid();
+
         $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
-        return $this->redirectToRoute('mmitv_home');
+        return $this->redirectToRoute('mmitv_faq');
     }
 }

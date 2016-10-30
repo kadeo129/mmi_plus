@@ -38,7 +38,6 @@ class MMIRenew
         if(isset($lastGrid))
         {
             $weekNumber = ($lastGrid->getWeek()+1);
-
         }
         else
         {
@@ -48,21 +47,25 @@ class MMIRenew
         $newGrid = new Grid();
         $newGrid->setStatus(false);
         $newGrid->setWeek($weekNumber);
+
+
+        for($i = 1; $i <= 5; $i++)
+        {
+            for($j = 1; $j <= 7; $j++)
+            {
+                $bloc = new Bloc();
+                //$bloc->setCategory();
+                $bloc->setGrid($newGrid);
+                $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
+                $bloc->setSlot($j);
+                $bloc->setStatus('0');
+                $bloc->setDay($i);
+                $em->persist($bloc);
+                $em->flush();
+            }
+        }
+
         $em->persist($newGrid);
         $em->flush();
-
-        // Création des 35 nouveaux blocs de la grille
-        $bloc = new Bloc();
-        $bloc->setCategory($this->getReference('Graphisme'));
-        $bloc->setGrid($this->getReference(1));
-        $bloc->setDuration(\DateTime::createFromFormat("H:i:s", "01:30:00"));
-        $bloc->setSlot('1');
-        $bloc->setStatus('0');
-        $bloc->setDay('1');
-        $manager->persist($bloc);
-        $manager->flush();
-
-
-
     }
 }

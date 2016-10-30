@@ -54,7 +54,7 @@ class Bloc
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Grid", inversedBy="blocs")
+     * @ORM\ManyToOne(targetEntity="MMI\TVBundle\Entity\Grid", inversedBy="blocs", cascade={"persist"})
      * @ORM\JoinColumn(name="grid", referencedColumnName="id", onDelete="CASCADE")
      */
     private $grid;
