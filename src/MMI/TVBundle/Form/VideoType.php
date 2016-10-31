@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class VideoType extends AbstractType
@@ -17,23 +20,26 @@ class VideoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('url')
-            ->add('duration')
-            ->add('description')
+            ->add('title', TextType::class, array('label'=>'Titre'))
+            ->add('url', TextType::class, array('label'=>'Lien URL'))
+            ->add('duration', TimeType::class, array('label'=>'Durée', 'with_seconds'=>true))
+            ->add('description', TextareaType::class)
             ->add('date')
-            ->add('poster')
+            ->add('poster', TextType::class, array('label'=>'Image'))
             ->add('category', EntityType::class,array(
                 'class' => 'MMITVBundle:Category',
                 'choice_label'=>'name',
                 'multiple' => false,
                 'expanded' => false,
+                'label'=>'Catégorie',
             ))
             ->add('blocs', EntityType::class, array(
                 'class'        => 'MMITVBundle:Bloc',
-                'choice_label' => 'id',
+                'choice_label' => 'slot',
+
                 'multiple'     => true,
                 'expanded' => false,
+                'label' => 'Créneau horaire',
             ))
         ;
     }

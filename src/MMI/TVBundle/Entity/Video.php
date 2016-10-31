@@ -37,9 +37,9 @@ class Video
     private $url;
 
     /**
-     * @var \DateTime
+     * @var time
      *
-     * @ORM\Column(name="duration", type="datetimetz")
+     * @ORM\Column(name="duration", type="time")
      */
     private $duration;
 
