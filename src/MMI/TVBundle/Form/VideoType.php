@@ -2,6 +2,7 @@
 
 namespace MMI\TVBundle\Form;
 
+use MMI\TVBundle\Repository\BlocRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -11,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use MMI\TVBundle\Entity\Bloc;
 
 class VideoType extends AbstractType
 {
@@ -18,9 +20,17 @@ class VideoType extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
+
+//    protected $grid;
+//
+//    public function __construct($grid)
+//    {
+//        $this->grid = $grid;
+//    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $grid = array();
+        $planning = array();
         $days = array(
             'Lundi',
             'Mardi',
@@ -42,10 +52,10 @@ class VideoType extends AbstractType
         foreach($days as $day)
         {
             foreach($hours as $hour=>$slot)
-           $grid[$day][$hour]=$slot;
+           $planning[$day][$hour]=$slot;
         }
 
-        var_dump($grid);
+        var_dump($planning);
 
         $builder
             ->add('title', TextType::class, array('label'=>'Titre'))
@@ -63,7 +73,14 @@ class VideoType extends AbstractType
             ))
             ->add('blocs', EntityType::class,array(
                 'class' => 'MMITVBundle:Bloc',
-                'choice_label'=>'id',
+                'query_builder' => function(BlocRepository $br) use ($options){
+                   return $br->createQueryBuilder('b')
+                       ->where('b.grid=:grid')
+                       ->setParameter('grid',$options['grid'])
+                   ;
+                },
+//                'choice_label'=>'id',
+                'choices' =>$planning,
                 'multiple' => true,
                 'expanded' => false,
                 'label'=>'Créneau horaire',
@@ -78,8 +95,8 @@ class VideoType extends AbstractType
 //                'label' => 'Créneau horaire',
 //            ))
 //            ->add('blocs', ChoiceType::class, array(
-//                'class'        => 'MMITVBundle:Bloc',
-//                'choices' =>$grid,
+//                'class'=> 'MMITVBundle:Bloc',
+//                'choices' =>$planning,
 //                'choice_label'=>'slot',
 //                'multiple'     => true,
 //                'expanded' => false,
@@ -94,7 +111,8 @@ class VideoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'MMI\TVBundle\Entity\Video'
+            'data_class' => 'MMI\TVBundle\Entity\Video',
+            'grid' => 0,
         ));
     }
 }

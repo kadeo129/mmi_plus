@@ -30,7 +30,7 @@ class MainController extends Controller
         );
 
         $planning = $em->getRepository('MMITVBundle:Grid')
-            ->getMostRecentId(1);
+            ->getMostRecentId();
 
         $gridId = $planning->getId();
 

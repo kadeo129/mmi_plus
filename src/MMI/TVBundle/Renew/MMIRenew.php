@@ -46,7 +46,7 @@ class MMIRenew
 
         // Création d'une nouvelle grille
         $lastGrid = $em ->getRepository('MMITVBundle:Grid')
-                        ->getMostRecentId(1);
+                        ->getMostRecentId();
 
         if(isset($lastGrid))
         {
@@ -220,7 +220,7 @@ class MMIRenew
         $em = $this->getEm();
 
         $mostRecentGrid = $em->getRepository('MMITVBundle:Grid')
-                                ->getMostRecentId(1);
+                                ->getMostRecentId();
         $limit = ($mostRecentGrid->getWeek()-4);
 
         $oldGrids = $em->getRepository('MMITVBundle:Grid')

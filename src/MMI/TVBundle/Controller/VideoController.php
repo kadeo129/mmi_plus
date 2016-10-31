@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MMI\TVBundle\Entity\Video;
+use MMI\TVBundle\Entity\Grid;
 use MMI\TVBundle\Form\VideoType;
 
 class VideoController extends Controller
@@ -25,12 +26,17 @@ class VideoController extends Controller
     public function newAction(Request $request)
     {
         $video = new Video();
-        $form = $this->createForm('MMI\TVBundle\Form\VideoType', $video);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $grid = $em->getRepository('MMITVBundle:Grid')->getMostRecentId()->getId();
+
+
+        $form = $this->createForm('MMI\TVBundle\Form\VideoType', $video, array('grid'=>$grid));
        // $form->get('blocs')->setData($blocId);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($video);
             $em->flush();
 
