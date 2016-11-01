@@ -29,11 +29,19 @@ class VideoController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $grid = $em->getRepository('MMITVBundle:Grid')->getMostRecentId()->getId();
+        //$grid = $em->getRepository('MMITVBundle:Grid')->getMostRecentId()->getId();
 
+        $planning = $em->getRepository('MMITVBundle:Grid')
+            ->getMostRecentId();
 
-        $form = $this->createForm('MMI\TVBundle\Form\VideoType', $video, array('grid'=>$grid));
-       // $form->get('blocs')->setData($blocId);
+        $gridId = $planning->getId();
+
+        $blocs = $em->getRepository('MMITVBundle:Bloc')
+            ->getOrderedBlocs($gridId)
+        ;
+
+        $form = $this->createForm('MMI\TVBundle\Form\VideoType', $video, array( /*'grid'=>$grid)*/ 'blocs'=>$blocs));
+       //$form->get('blocs')->setData($blocId);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -61,8 +69,21 @@ class VideoController extends Controller
 
     public function editAction(Request $request, Video $video)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        //$grid = $em->getRepository('MMITVBundle:Grid')->getMostRecentId()->getId();
+
+        $planning = $em->getRepository('MMITVBundle:Grid')
+            ->getMostRecentId();
+
+        $gridId = $planning->getId();
+
+        $blocs = $em->getRepository('MMITVBundle:Bloc')
+            ->getOrderedBlocs($gridId)
+        ;
+
         $deleteForm = $this->createDeleteForm($video);
-        $editForm = $this->createForm('MMI\TVBundle\Form\VideoType', $video);
+        $editForm = $this->createForm('MMI\TVBundle\Form\VideoType', $video, array( /*'grid'=>$grid)*/ 'blocs'=>$blocs));
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

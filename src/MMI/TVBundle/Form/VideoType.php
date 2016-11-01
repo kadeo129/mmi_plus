@@ -40,20 +40,21 @@ class VideoType extends AbstractType
         );
 
         $hours = array(
-            '8H00 - 9H30'=>'1',
-            '9H30 - 11H00'=>'2',
-            '11H00 - 12H30'=>'3',
-            '12H30 - 14H00'=>'4',
-            '14H00 - 15H30'=>'5',
-            '15H30 - 17H00'=>'6',
-            '17H00 - 18H30'=>'7',
+            '8H00 - 9H30'=>'0',
+            '9H30 - 11H00'=>'1',
+            '11H00 - 12H30'=>'2',
+            '12H30 - 14H00'=>'3',
+            '14H00 - 15H30'=>'4',
+            '15H30 - 17H00'=>'5',
+            '17H00 - 18H30'=>'6',
         );
 
         foreach($days as $day)
         {
             foreach($hours as $hour=>$slot)
-           $planning[$day][$hour]=$slot;
+           $planning[$day][$hour][$slot]=$options['blocs'][$slot];
         }
+
 
         var_dump($planning);
 
@@ -73,13 +74,13 @@ class VideoType extends AbstractType
             ))
             ->add('blocs', EntityType::class,array(
                 'class' => 'MMITVBundle:Bloc',
-                'query_builder' => function(BlocRepository $br) use ($options){
-                   return $br->createQueryBuilder('b')
-                       ->where('b.grid=:grid')
-                       ->setParameter('grid',$options['grid'])
-                   ;
-                },
-//                'choice_label'=>'id',
+                //'query_builder' => function(BlocRepository $br) use ($options){
+                  // return $br->createQueryBuilder('b')
+                   //    ->where('b.grid=:grid')
+                    //   ->setParameter('grid',$options['grid'])
+                   //;
+                //},
+                'choice_label'=>'slot',
                 'choices' =>$planning,
                 'multiple' => true,
                 'expanded' => false,
@@ -112,7 +113,8 @@ class VideoType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'MMI\TVBundle\Entity\Video',
-            'grid' => 0,
+            //'grid' => 0,
+            'blocs'=>0,
         ));
     }
 }

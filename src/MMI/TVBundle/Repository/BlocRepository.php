@@ -47,4 +47,8 @@ class BlocRepository extends \Doctrine\ORM\EntityRepository
                 ->getSingleResult()
         ;
     }
+
+    public function getBlocOptions($grid)
+    {
+    }
 }
