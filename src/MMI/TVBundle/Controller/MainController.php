@@ -7,8 +7,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use MMI\TVBundle\Entity\Bloc;
+use MMI\TVBundle\Entity\Category;
+use MMI\TVBundle\Entity\Video;
+use MMI\TVBundle\Entity\Grid;
 use MMI\TVBundle\Form\BlocType;
 use MMI\TVBundle\Renew\MMIRenew;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
+
 
 
 class MainController extends Controller
@@ -89,5 +98,78 @@ class MainController extends Controller
 
         $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
         return $this->redirectToRoute('mmitv_home');
+    }
+
+    public function liveAction(Request $request)
+    {
+        $jsonGrid = array();
+
+        $em = $this->getDoctrine()->getManager();
+
+        $planning = $em->getRepository('MMITVBundle:Grid')
+            ->getMostRecentId();
+
+        $gridId = $planning->getId();
+
+        $blocs = $em->getRepository('MMITVBundle:Bloc')
+            ->getOrderedBlocsWithVideos($gridId)
+        ;
+
+        $encoders = array(new JsonEncoder());
+        $normalizers = array(new GetSetMethodNormalizer());
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        foreach($blocs as $bloc)
+        {
+
+        }
+
+
+        return $this->render('MMITVBundle:main:live.html.twig', array(
+            'blocs'=>$blocs,
+        ));
+    }
+
+    public function jsonAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $jsonContent=array();
+
+        $blocs = $em->getRepository('MMITVBundle:Bloc')
+            ->findByGrid('343');
+        ;
+        foreach($blocs as $bloc)
+        {
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new GetSetMethodNormalizer());
+
+            $serializer = new Serializer($normalizers, $encoders);
+
+            $bloc->getCategory();
+            $bloc->getGrid();
+            $bloc->getVideos();
+
+            $joliBloc=array(
+                'id'=>$bloc->getId(),
+                'duration'=>$bloc->getDuration()->format('H:i:s'),
+                'slot'=>$bloc->getSlot(),
+                'status'=>$bloc->getStatus(),
+                'category'=>$bloc->getCategory()->getName(),
+                'grid'=>$bloc->getGrid()->getId(),
+                'day'=>$bloc->getDay()
+            );
+            $jsonContent[]=$joliBloc;
+            //$json=json_encode($joliBloc);
+            //var_dump($json);
+
+        }
+        $json = $serializer->serialize($jsonContent, 'json');
+        var_dump($json);
+
+        return $this->render('MMITVBundle:main:live.html.twig', array(
+            'bloc'=>$blocs,
+        ));
     }
 }

@@ -48,7 +48,26 @@ class BlocRepository extends \Doctrine\ORM\EntityRepository
         ;
     }
 
-    public function getBlocOptions($grid)
+    public function getOrderedBlocsWithVideos($id)
     {
+        $qb = $this->createQueryBuilder('b');
+
+        $qb
+            ->where('b.grid = :id')
+            ->setParameter('id',$id)
+            ->innerJoin('b.category','c')
+            ->addSelect('c')
+            ->leftJoin('b.videos','v')
+            ->addSelect('v')
+            ->addOrderBy('b.day','ASC')
+            ->addOrderBy('b.slot','ASC')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
     }
+
+
 }

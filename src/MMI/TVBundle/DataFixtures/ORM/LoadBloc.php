@@ -18,7 +18,7 @@ class BlocFixtures extends AbstractFixture
         $this->loadGrids($manager);
         $this->loadCategories($manager);
         $this->loadBlocs($manager);
-        $this->loadVideos($manager);
+       // $this->loadVideos($manager);
     }
 
     public function loadGrids(ObjectManager $manager)
@@ -450,227 +450,227 @@ class BlocFixtures extends AbstractFixture
         $manager->flush();
     }
 
-    public function loadVideos(ObjectManager $manager)
-    {
-        $video = new Video();
-        $video->setTitle('Introduction to Networking');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
-        $video->setCategory($this->getReference('Techno'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Understanding Broadband Technologies');
-        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
-        $video->setCategory($this->getReference('Techno'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('How to Paint Skin Realistically-Remastered');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
-        $video->setCategory($this->getReference('Audiovisuel'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Eva D. (48HFP Paris 2014 - Prix Spécial du Jury)');
-        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
-        $video->setCategory($this->getReference('Audiovisuel'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo Graphisme');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
-        $video->setCategory($this->getReference('Graphisme'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo Divertissement');
-        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
-        $video->setCategory($this->getReference('Divertissement'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo After MMI');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
-        $video->setCategory($this->getReference('After MMI'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo Ateliers');
-        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
-        $video->setCategory($this->getReference('Ateliers'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo pour Graphisme');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
-        $video->setCategory($this->getReference('Graphisme'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo pour Divertissement');
-        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
-        $video->setCategory($this->getReference('Divertissement'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo pour After MMI');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
-        $video->setCategory($this->getReference('After MMI'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Super vidéo Ateliers');
-        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
-        $video->setCategory($this->getReference('Ateliers'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Super vidéo Graphisme');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
-        $video->setCategory($this->getReference('Graphisme'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Super vidéo Divertissement');
-        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
-        $video->setCategory($this->getReference('Divertissement'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Super vidéo After MMI');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
-        $video->setCategory($this->getReference('After MMI'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Vidéo Ateliers');
-        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
-        $video->setCategory($this->getReference('Ateliers'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Graphisme');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
-        $video->setCategory($this->getReference('Graphisme'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Divertissement');
-        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
-        $video->setCategory($this->getReference('Divertissement'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('After MMI');
-        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
-        $video->setCategory($this->getReference('After MMI'));
-        $manager->persist($video);
-        $manager->flush();
-
-        $video = new Video();
-        $video->setTitle('Ateliers');
-        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
-        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
-        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
-        $video->setDate(new \DateTime());
-        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
-        $video->setCategory($this->getReference('Ateliers'));
-        $manager->persist($video);
-        $manager->flush();
-
-    }
+//    public function loadVideos(ObjectManager $manager)
+//    {
+//        $video = new Video();
+//        $video->setTitle('Introduction to Networking');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
+//        $video->setCategory($this->getReference('Techno'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Understanding Broadband Technologies');
+//        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
+//        $video->setCategory($this->getReference('Techno'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('How to Paint Skin Realistically-Remastered');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
+//        $video->setCategory($this->getReference('Audiovisuel'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Eva D. (48HFP Paris 2014 - Prix Spécial du Jury)');
+//        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
+//        $video->setCategory($this->getReference('Audiovisuel'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo Graphisme');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
+//        $video->setCategory($this->getReference('Graphisme'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo Divertissement');
+//        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
+//        $video->setCategory($this->getReference('Divertissement'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo After MMI');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
+//        $video->setCategory($this->getReference('After MMI'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo Ateliers');
+//        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
+//        $video->setCategory($this->getReference('Ateliers'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo pour Graphisme');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
+//        $video->setCategory($this->getReference('Graphisme'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo pour Divertissement');
+//        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
+//        $video->setCategory($this->getReference('Divertissement'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo pour After MMI');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
+//        $video->setCategory($this->getReference('After MMI'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Super vidéo Ateliers');
+//        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
+//        $video->setCategory($this->getReference('Ateliers'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Super vidéo Graphisme');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
+//        $video->setCategory($this->getReference('Graphisme'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Super vidéo Divertissement');
+//        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
+//        $video->setCategory($this->getReference('Divertissement'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Super vidéo After MMI');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
+//        $video->setCategory($this->getReference('After MMI'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Vidéo Ateliers');
+//        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
+//        $video->setCategory($this->getReference('Ateliers'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Graphisme');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in computer networking. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img3.png');
+//        $video->setCategory($this->getReference('Graphisme'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Divertissement');
+//        $video->setUrl('https://www.youtube.com/watch?v=-7EpXCnN0lo');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class teaches students about the various types of broadband technologies available to connect homes and businesses to the Internet. We discuss the pros and cons of the different options so that students can make an informed decision about purchasing their Internet service.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img4.png');
+//        $video->setCategory($this->getReference('Divertissement'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('After MMI');
+//        $video->setUrl('https://www.youtube.com/watch?v=rL8RSFQG8do&list=PLF360ED1082F6F2A5&index=1');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('This class introduces students to the equipment used in art painting. This class teaches students what each individual piece of equipment does, and how they work together.');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img1.png');
+//        $video->setCategory($this->getReference('After MMI'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//        $video = new Video();
+//        $video->setTitle('Ateliers');
+//        $video->setUrl('https://www.youtube.com/watch?v=sStaSlGFDBw');
+//        $video->setDuration(\DateTime::createFromFormat("H:i:s", "00:05:00"));
+//        $video->setDescription('Avec : Roxane Bret, Grégoire Hussenot, Ernst Umhauer, Jérémy Bernard, Samuel Giuranna, Bastien Ughetto & Alexandre Prince !');
+//        $video->setDate(new \DateTime());
+//        $video->setPoster('http://195.83.128.55/~mmid215b09/img2.png');
+//        $video->setCategory($this->getReference('Ateliers'));
+//        $manager->persist($video);
+//        $manager->flush();
+//
+//    }
 }

@@ -180,5 +180,22 @@ mmi_tv_renew:
     requirements:
             id:    \d+
 
+mmitv_live:
+    path:    /live
+    defaults:
+        _controller: MMITVBundle:Main:live
+        _format: json
+    requirements:
+        _format: (xml|json)
+
+mmitv_json:
+    path:    /json
+    defaults:
+        _controller: MMITVBundle:Main:json
+
+
+
+
+
 
 

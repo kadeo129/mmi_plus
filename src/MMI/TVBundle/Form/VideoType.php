@@ -56,8 +56,6 @@ class VideoType extends AbstractType
         }
 
 
-        var_dump($planning);
-
         $builder
             ->add('title', TextType::class, array('label'=>'Titre'))
             ->add('url', TextType::class, array('label'=>'Lien URL'))
