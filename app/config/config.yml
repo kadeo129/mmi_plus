@@ -73,3 +73,6 @@ fos_user:
     db_driver:    orm # other valid values are 'mongodb', 'couchdb', and 'propel'
     firewall_name:    main
     user_class:    MMI\TVBundle\Entity\User
+    registration:
+        form:
+            type: MMI\TVBundle\Form\RegistrationType

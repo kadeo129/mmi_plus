@@ -6,3 +6,8 @@ services:
     mmi_tv.renew.grid:
         class: MMI\TVBundle\Renew\MMIRenew
         arguments: ["@request_stack", "@doctrine.orm.entity_manager"]
+
+    mmi.form.registration:
+        class: MMI\TVBundle\Form\RegistrationType
+        tags:
+            -{ name: form.type, alias: app_user_registration }

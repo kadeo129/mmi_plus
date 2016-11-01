@@ -7,10 +7,10 @@
 {% block body %}
 
     <div class="row">
-        <div class="container">
-            <div class="col-md-9 col-xs-12">
-                <button><a href="{{ path('mmi_tv_renew', {'id': planning.id}) }}">Valider la grille</a></button>
-                <button><a href="{{ path('mmitv_video_new', {'id': planning.id}) }}">Ajouter une vidéo</a></button>
+        <div class="container timeline--button">
+                    <button class="oblikd btn"><a href="{{ path('mmi_tv_renew', {'id': planning.id}) }}">Valider la grille</a></button>
+                    <button class="oblikd btn"><a href="{{ path('mmitv_video_new', {'id': planning.id}) }}">Ajouter une vidéo</a></button>
+
             </div>
         </div>
     </div>
