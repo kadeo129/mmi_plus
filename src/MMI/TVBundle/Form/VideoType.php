@@ -70,6 +70,13 @@ class VideoType extends AbstractType
                 'expanded' => false,
                 'label'=>'Catégorie',
             ))
+            ->add('user', EntityType::class,array(
+                'class' => 'MMITVBundle:User',
+                'choice_label'=>'username',
+                'multiple' => false,
+                'expanded' => false,
+                'label'=>'Auteur',
+            ))
             ->add('blocs', EntityType::class,array(
                 'class' => 'MMITVBundle:Bloc',
                 //'query_builder' => function(BlocRepository $br) use ($options){

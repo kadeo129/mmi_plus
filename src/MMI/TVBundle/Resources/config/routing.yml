@@ -184,9 +184,7 @@ mmitv_live:
     path:    /live
     defaults:
         _controller: MMITVBundle:Main:live
-        _format: json
-    requirements:
-        _format: (xml|json)
+
 
 mmitv_json:
     path:    /json

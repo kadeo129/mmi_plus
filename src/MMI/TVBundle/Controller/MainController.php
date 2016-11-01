@@ -102,54 +102,64 @@ class MainController extends Controller
 
     public function liveAction(Request $request)
     {
-        $jsonGrid = array();
-
+        //Appel de l'EntityManager
         $em = $this->getDoctrine()->getManager();
 
-        $planning = $em->getRepository('MMITVBundle:Grid')
-            ->getMostRecentId();
+        // Déclaration des tableaux destinés à contenir les données json
+        $jsonContent=array();
+        $joliesVideos=array();
 
-        $gridId = $planning->getId();
-
-        $blocs = $em->getRepository('MMITVBundle:Bloc')
-            ->getOrderedBlocsWithVideos($gridId)
-        ;
-
+        // Serializer tools
         $encoders = array(new JsonEncoder());
         $normalizers = array(new GetSetMethodNormalizer());
-
         $serializer = new Serializer($normalizers, $encoders);
 
-        foreach($blocs as $bloc)
-        {
+        // Récupération de la grille de la semaine précédente
+        $newId = $em->getRepository('MMITVBundle:Grid')
+            ->getMostRecentId()->getId();
+        $oldId = $newId - 1;
 
-        }
+        $grid = $em->getRepository('MMITVBundle:Grid')
+            ->findOneById($oldId);
 
-
-        return $this->render('MMITVBundle:main:live.html.twig', array(
-            'blocs'=>$blocs,
-        ));
-    }
-
-    public function jsonAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $jsonContent=array();
-
+        // Récupération des blocs et de leurs vidéos
         $blocs = $em->getRepository('MMITVBundle:Bloc')
-            ->findByGrid('343');
+            ->getOrderedBlocsWithVideos($grid);
         ;
+
+        // Pour chaque bloc création d'un tableau php contenant ses données
         foreach($blocs as $bloc)
         {
-            $encoders = array(new JsonEncoder());
-            $normalizers = array(new GetSetMethodNormalizer());
 
-            $serializer = new Serializer($normalizers, $encoders);
 
+            //Get Json related entities
             $bloc->getCategory();
             $bloc->getGrid();
             $bloc->getVideos();
+
+            if(!empty($bloc->getVideos()))
+            {
+                foreach($bloc->getVideos() as $video)
+                {
+                    // Pour chaque vidéo du bloc, si elle existe, récupération des données dans un tableau PHP
+                    $jolieVideo = array
+                    (
+                        'id'=>$video->getId(),
+                        'category'=>$video->getCategory()->getName(),
+                        'user'=>$video->getUser()->getUsername(),
+                        'title'=>$video->getTitle(),
+                        'url'=>$video->getUrl(),
+                        'duration'=>$video->getDuration()->format('H:i:s'),
+                        'description'=>$video->getDescription(),
+                        'date'=>$video->getDate()->format('H:i:s'),
+                        'poster'=>$video->getPoster(),
+                    );
+                    $joliesVideos[]=$jolieVideo;
+                }
+                $json_videos= $serializer->serialize($joliesVideos, 'json');
+            }else{
+                $json_videos=null;
+            }
 
             $joliBloc=array(
                 'id'=>$bloc->getId(),
@@ -158,7 +168,90 @@ class MainController extends Controller
                 'status'=>$bloc->getStatus(),
                 'category'=>$bloc->getCategory()->getName(),
                 'grid'=>$bloc->getGrid()->getId(),
-                'day'=>$bloc->getDay()
+                'day'=>$bloc->getDay(),
+                'videos'=>$json_videos,
+            );
+
+            //Stockage des tableaux PHP contenant les données de chaque bloc dans un seul et grand tableau
+            $jsonContent[]=$joliBloc;
+            //$json=json_encode($joliBloc);
+            //var_dump($json);
+
+        }
+
+        //Conversion du tableau de données en JSON
+        $json = $serializer->serialize($jsonContent, 'json');
+
+        // Affichage vérification du tableau
+        var_dump($json);
+
+        //var_dump($blocs);
+        return $this->render('MMITVBundle:main:live.html.twig', array(
+            'json'=>$json,
+        ));
+    }
+
+    public function jsonAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $jsonContent=array();
+        $joliesVideos=array();
+
+        $newId = $em->getRepository('MMITVBundle:Grid')
+            ->getMostRecentId()->getId();
+        $oldId = $newId - 1;
+
+        $grid = $em->getRepository('MMITVBundle:Grid')
+                    ->findById($oldId);
+
+        $blocs = $em->getRepository('MMITVBundle:Bloc')
+            ->findByGrid($grid);
+        ;
+        foreach($blocs as $bloc)
+        {
+            // Serializer tools
+            $encoders = array(new JsonEncoder());
+            $normalizers = array(new GetSetMethodNormalizer());
+            $serializer = new Serializer($normalizers, $encoders);
+
+            //Get Json related entities
+            $bloc->getCategory();
+            $bloc->getGrid();
+            $bloc->getVideos();
+
+            if(!empty($bloc->getVideos()))
+            {
+                foreach($bloc->getVideos() as $video)
+                {
+                    $jolieVideo = array
+                    (
+                    'id'=>$video->getId(),
+                    'category'=>$video->getCategory()->getName(),
+                    'user'=>$video->getUser()->getUsername(),
+                    'title'=>$video->getTitle(),
+                    'url'=>$video->getUrl(),
+                    'duration'=>$video->getDuration()->format('H:i:s'),
+                    'description'=>$video->getDescription(),
+                    'date'=>$video->getDate()->format('H:i:s'),
+                    'poster'=>$video->getPoster(),
+                    );
+                    $joliesVideos[]=$jolieVideo;
+                }
+                $json_videos= $serializer->serialize($joliesVideos, 'json');
+            }else{
+                $json_videos=null;
+            }
+
+            $joliBloc=array(
+                'id'=>$bloc->getId(),
+                'duration'=>$bloc->getDuration()->format('H:i:s'),
+                'slot'=>$bloc->getSlot(),
+                'status'=>$bloc->getStatus(),
+                'category'=>$bloc->getCategory()->getName(),
+                'grid'=>$bloc->getGrid()->getId(),
+                'day'=>$bloc->getDay(),
+                'videos'=>$json_videos,
             );
             $jsonContent[]=$joliBloc;
             //$json=json_encode($joliBloc);
@@ -167,7 +260,7 @@ class MainController extends Controller
         }
         $json = $serializer->serialize($jsonContent, 'json');
         var_dump($json);
-
+        //var_dump($blocs);
         return $this->render('MMITVBundle:main:live.html.twig', array(
             'bloc'=>$blocs,
         ));
