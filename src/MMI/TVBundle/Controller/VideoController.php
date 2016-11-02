@@ -14,12 +14,19 @@ class VideoController extends Controller
 {
     public function indexAction()
     {
+        // Get User
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $videos = $em->getRepository('MMITVBundle:Video')->findAll();
 
         return $this->render('MMITVBundle:video:index.html.twig', array(
             'videos' => $videos,
+            'user' => $user,
         ));
     }
 

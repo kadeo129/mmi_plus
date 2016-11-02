@@ -16,8 +16,11 @@
                         <th>Description</th>
                         <th>Date</th>
                         <th>Image associée</th>
-                        <th>Actions possibles</th>
                         <th>Catégorie</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th>Actions possibles</th>
+                        {% endif %}
+
                     </tr>
                     </thead>
                     <tbody>
@@ -31,16 +34,19 @@
                             <td>{{ video.date|date("m/d/Y") }}</td>
                             <td><div class="img-responsive"><img src="{{ video.poster }}" alt=""/></div></td>
                             <td>{{ video.category.name }}</td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('mmitv_video_show', { 'id': video.id }) }}">Voir</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer</a>
-                                    </li>
-                                </ul>
-                            </td>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('mmitv_video_show', { 'id': video.id }) }}">Voir</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                {% endif %}
+
                         </tr>
                     {% endfor %}
                     </tbody>

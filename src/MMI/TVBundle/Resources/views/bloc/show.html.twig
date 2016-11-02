@@ -23,10 +23,13 @@
                         <p>{{ video.description }}</p>
                         <p>{{ video.url }}</p>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4">
-                        <p><a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer</a></p>
-                        <p><a href="{{ path('mmitv_video_softdelete', { 'id': video.id }) }}">Supprimer de la grille</a></p>
-                    </div>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <p><a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer</a></p>
+                            <p><a href="{{ path('mmitv_video_softdelete', { 'id': video.id }) }}">Supprimer de la grille</a></p>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
