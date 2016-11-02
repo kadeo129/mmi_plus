@@ -1,0 +1,136 @@
+#decomenu li, #decomenu:hover li{
+	-webkit-transition: 0.5s; /* Safari */
+    transition: 0.5s;
+    width: 100%;
+}
+
+#decomenu:hover li{
+	background: #7ee4d7;
+}
+
+#decomenu li a, .form-control, .navbar, .navbar-brand, li a, button {
+	height: 60px;
+}
+
+
+
+#prenom, #prenom:hover {
+	float: left;
+    padding: 5px 15px;
+    -webkit-transition: 0.5s; /* Safari */
+    transition: 0.5s;
+    font-size:18px;
+}
+
+#prenom:hover{
+	color: #7ee4d7;
+}
+	
+
+#biblio, #timeline, #faq, #quick, #contact, #modif, #supp, #signal { opacity:0; }	
+#biblio:hover, #timeline:hover, #faq:hover, #quick:hover, #contact:hover, #modif:hover, #supp:hover, #signal:hover { opacity: 1; }	
+
+#biblioa, #biblio { background: url("../img/icon/bibliosprite.png") 0 0 no-repeat; }
+#timelinea, #timeline{ background: url("../img/icon/timelinesprite.png") 0 0 no-repeat; }
+#faq, #faqa { background: url("../img/icon/faqsprite.png") 0 0 no-repeat; }
+#quicka, #quick { background: url("../img/icon/quicksprite.png") 0 0 no-repeat; }
+#contacta, #contact { background: url("../img/icon/contactsprite.png") 0 0 no-repeat; }
+#logout { background: url("../img/icon/logout.png") 0 0 no-repeat;}
+
+#modif, #modifa { background: url("../img/icon/modifsprite.png") 0 0 no-repeat; }
+#supp, #suppa { background: url("../img/icon/suppsprite.png") 0 0 no-repeat; }
+#signal, #signala { background: url("../img/icon/signalsprite.png") 0 0 no-repeat; display:none;}
+
+#timeline, #biblio , #faq, #quick, #contact, #modif, #supp, #signal, .current{
+	background-position: -30px 0px !important; 
+	color: #7ee4d7 !important;
+}
+
+#logout {
+	background-size: 30px !important;
+	margin: 5px auto;
+}
+
+#timelinea, #timeline, #biblioa, #biblio, #faq, #quick, #contact, #faqa, #quicka, #contacta, #modif,#modifa,#supp,#suppa, #signala, #signal, #logout{
+	background-size: 60px;
+	height: 30px;
+	width: 30px;
+	-webkit-transition: opacity 0.5s; /* Safari */
+    transition: opacity 0.5s;
+}
+
+
+.faqnav:hover #faqmenu, .deconav:hover #decomenu {
+	max-height: 200px;
+	transition: 1s;
+}
+
+#faqmenu, #decomenu {
+	max-height:0px;
+	transition: 1s;
+	overflow: hidden;
+}
+
+.deconav ul, .faqnav ul {
+	position: absolute;
+    width: 100%;
+}
+
+
+			/*NAVBAR*/
+
+
+.navbar-brand {
+	margin-left:0 !important;
+}
+
+.navbar-brand img {
+	height: 25px;
+}
+
+
+.navbar-right {
+    margin-right: 0px;
+}
+
+.navbar-nav li{
+	float:left;
+}
+
+.container-fluid .navbar-header {
+	margin: 0;
+    float: left;
+}
+
+.navbar{
+	border-radius: 0;
+	border:none;
+	margin-bottom:0;
+}
+
+.navbar, .nav li{
+	background-color: #313131;
+}
+
+.navbar-nav {
+	margin: 0px -15px;
+	float: right;
+}
+
+
+.vbar {
+	border-left: 2px solid #202020;
+}
+
+.nav li a, .nav li p {
+	color:white;
+}
+
+.navigation li a:hover, .navigation li a:focus{
+	background-color: transparent;
+}
+
+.navigation {
+	z-index: 200;
+    position: relative;
+}

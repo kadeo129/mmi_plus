@@ -1,0 +1,48 @@
+body { 
+  margin:0;
+  padding:0;
+  background: url(students.jpg) no-repeat center fixed;
+  -webkit-background-size: cover;
+  background-size: cover;
+  font-family: rounded;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+#connexion{
+	background: white;
+	padding: 30px;
+	float: right;
+	text-align: center; 
+	margin-top: 20%;
+}
+
+img{
+	margin-bottom: 50px;
+}
+
+p{
+	text-transform: none;
+	font-size: 10px;
+}
+
+label{
+	font-weight: normal;
+}
+
+input{
+	border: #7ee4d7 solid;
+	padding: 5px;
+}
+
+.btn{
+	width: 90%;
+	height: 50px;
+	background: #7ee4d7;
+	border-radius: 0;
+}
+
+.form-group h1{
+	color:white;
+	margin: 0;
+}

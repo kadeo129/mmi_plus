@@ -1,0 +1,41 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <h1>Grid list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Week</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for grid in grids %}
+            <tr>
+                <td><a href="{{ path('mmitv_grid_show', { 'id': grid.id }) }}">{{ grid.id }}</a></td>
+                <td>{{ grid.week }}</td>
+                <td>{% if grid.status %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('mmitv_grid_show', { 'id': grid.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('mmitv_grid_edit', { 'id': grid.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('mmitv_grid_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
