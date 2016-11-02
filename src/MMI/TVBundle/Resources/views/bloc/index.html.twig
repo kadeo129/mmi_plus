@@ -1,0 +1,41 @@
+{% extends '::layout.html.twig' %}
+
+{% block body %}
+    <h1>Grid</h1>
+    <div class="table-responsive">
+        <table class=" table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Lundi</th>
+                    <th>Mardi</th>
+                    <th>Mercredi</th>
+                    <th>Jeudi</th>
+                    <th>Vendredi</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for slot in 1..7 %}
+                <tr>
+                    <td></td>
+                    {% for day in 1..5 %}
+                        <td>
+                            {{ grid[day][slot]}}
+                            {% for category in slot %}
+                                {{ category.name }}
+                            {% endfor %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('mmitv_bloc_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+
+{% endblock %}

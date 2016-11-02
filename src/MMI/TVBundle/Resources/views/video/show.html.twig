@@ -1,0 +1,58 @@
+{% extends '::layout.html.twig' %}
+
+
+
+{% block body %}
+
+<div class="row">
+    <div class="container">
+        <h1>{{ video.title }}</h1>
+
+        <table class="table table-responsive">
+            <tbody>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ video.title }}</td>
+                </tr>
+                <tr>
+                    <th>Lien URL</th>
+                    <td>{{ video.url }}</td>
+                </tr>
+                <tr>
+                    <th>Durée</th>
+                    <td>{{ video.duration|date("i") }} min.</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ video.description }}</td>
+                </tr>
+                <tr>
+                    <th>Catégorie</th>
+                    <td>{{ video.category.name }}</td>
+                </tr>
+                <tr>
+                    <th>Date de création</th>
+                    <td>{{ video.date|date("m/d/Y") }}</td>
+                </tr>
+                <tr>
+                    <td><img src="{{ video.poster }}" alt=""></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('mmitv_biblio') }}">Retour à la liste des vidéos</a>
+            </li>
+            <li>
+                <a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer "{{ video.title }}"</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                    <input type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

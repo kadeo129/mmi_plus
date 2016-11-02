@@ -1,0 +1,61 @@
+.apercu {
+	box-shadow: 1px 1px 12px lightgrey;
+	height: calc(100vh - 60px);
+    padding:0;
+}
+
+.apercu .categorie {
+	background-color: white;
+    height: 60px;
+    padding: 10px 15px;
+}
+
+.apercu .lecteur {
+	position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.apercu .lecteur iframe{
+	width: 100%;
+    height: 100%;
+    position: absolute;
+    float: left;
+}
+
+.apercu .titre{
+	padding: 10px 15px;
+}
+
+.apercu .titre h1 {
+  margin: 0;
+}
+
+.apercu .info {
+	background-color: white;
+	float:left;
+    position: relative;
+}
+
+.apercu .description {
+	padding: 0 20px;
+    margin: 20px 0;
+    overflow: scroll;
+    height: 400px;
+    overflow-x: hidden;
+}
+
+
+.apercu .auteur{
+	float: left;
+	padding:15px;
+}
+
+.apercu .boutons {
+	float: right;
+	padding:15px;
+}
+
+.boutons a{
+	float: right;
+}

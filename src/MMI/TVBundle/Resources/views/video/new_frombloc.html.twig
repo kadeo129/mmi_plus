@@ -1,0 +1,36 @@
+{% extends '::layout.html.twig' %}
+{% block title %}
+    {{ parent() }} Ajout d'une vidéo
+{% endblock %}
+{% block style %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/bower_components/jquery/dist/jquery.min.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/moment/min/moment.min.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')  }}"></script>
+    <link rel="stylesheet" href="{{ asset('assets/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css')  }}" />
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <h1>Ajouter une vidéo</h1>
+
+                <div class="form-group">
+                    {% form_theme form "form.html.twig" %}
+                    {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input type="submit" value="Ajouter une vidéo" />
+                    {{ form_end(form) }}
+                </div>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('mmitv_home') }}">Retour à la liste de programmation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
