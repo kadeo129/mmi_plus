@@ -74,4 +74,37 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
             ->getResult()
         ;
     }
+
+    public function getByURL()
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb
+            ->groupBy('v.url')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getNumberOfURL($url)
+    {
+        $qb = $this->createQueryBuilder('v');
+
+        $qb
+            ->where('v.url = :url')
+            ->setParameter('url',$url)
+            ->select('COUNT(v)')
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
+
+
 }

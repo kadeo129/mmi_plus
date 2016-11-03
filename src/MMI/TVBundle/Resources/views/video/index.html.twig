@@ -9,7 +9,6 @@
                 <table class="table table-responsive">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Titre</th>
                         <th>Url</th>
                         <th>Durée</th>
@@ -26,7 +25,6 @@
                     <tbody>
                     {% for video in videos %}
                         <tr>
-                            <td><a href="{{ path('mmitv_video_show', { 'id': video.id }) }}">{{ video.id }}</a></td>
                             <td>{{ video.title }}</td>
                             <td>{{ video.url }}</td>
                             <td>{{ video.duration|date("i-s") }}</td>

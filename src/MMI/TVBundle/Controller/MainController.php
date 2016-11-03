@@ -113,6 +113,9 @@ class MainController extends Controller
         // Etape 3 : suppression des grilles vieilles de plus de deux semaines
         $renew->purgeGrids();
 
+        // Etape 4 : suppression des videos avec doublons URL vieilles de plus de trois semaines
+        $renew->purgeVideos();
+
         $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
         return $this->redirectToRoute('mmitv_home');
     }

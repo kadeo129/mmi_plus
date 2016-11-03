@@ -199,6 +199,14 @@ mmitv_json:
     defaults:
         _controller: MMITVBundle:Main:json
 
+mmitv_test_video:
+    path:    /testvideourl/{id}
+    defaults:
+        _controller: MMITVBundle:Video:testvideourl
+    requirements:
+                id:    \d+
+
+
 
 
 

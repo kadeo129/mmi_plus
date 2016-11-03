@@ -231,6 +231,36 @@ class MMIRenew
             $em->remove($oldGrid);
             $em->flush();
         }
-
     }
+
+    public function purgeVideos()
+    {
+        // Appel de l'EntityManager
+        $em = $this->getEm();
+
+        $videos= $em->getRepository('MMITVBundle:Video')->findAll();
+        foreach($videos as $video)
+        {
+            var_dump($video);
+            $videosWithSameURL = $em->getRepository('MMITVBundle:Video')->getNumberOfURL($video->getUrl());
+            var_dump($videosWithSameURL);
+            $reponse=null;
+            if($videosWithSameURL>1)
+            {
+                $tz  = new \DateTimeZone('Europe/Paris');
+                $age = \DateTime::createFromFormat('Y-m-d H:i:s', $video->getDate()->format('Y-m-d H:i:s'), $tz)->diff(new \DateTime('now', $tz))->days;
+                var_dump($age);
+                if($age>21)
+                {
+                    $em->remove($video);
+                    $em->flush();
+                    return $this->redirectToRoute('mmitv_home');
+                }
+            }
+            var_dump($reponse);
+            return $this->render('MMITVBundle:video:testvideo.html.twig');
+        }
+    }
+
+
 }

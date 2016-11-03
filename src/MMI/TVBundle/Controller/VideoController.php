@@ -22,7 +22,7 @@ class VideoController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $videos = $em->getRepository('MMITVBundle:Video')->findAll();
+        $videos = $em->getRepository('MMITVBundle:Video')->getByURL();
 
         return $this->render('MMITVBundle:video:index.html.twig', array(
             'videos' => $videos,
@@ -199,6 +199,37 @@ class VideoController extends Controller
         }
         $em->flush();
         return $this->redirectToRoute('mmitv_home');
+
+    }
+
+    public function testvideourlAction($id)
+    {
+        // Get User
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        }
+        $em = $this->getDoctrine()->getManager();
+        $video= $em->getRepository('MMITVBundle:Video')->findOneById($id);
+        var_dump($video);
+        $videosWithSameURL = $em->getRepository('MMITVBundle:Video')->getNumberOfURL($video->getUrl());
+        var_dump($videosWithSameURL);
+        $reponse=null;
+        if($videosWithSameURL>1)
+        {
+            $tz  = new \DateTimeZone('Europe/Paris');
+            $age = \DateTime::createFromFormat('Y-m-d H:i:s', $video->getDate()->format('Y-m-d H:i:s'), $tz)->diff(new \DateTime('now', $tz))->days;
+            var_dump($age);
+            if($age>21)
+            {
+                $em->remove($video);
+                $em->flush();
+                return $this->redirectToRoute('mmitv_home');
+            }
+
+        }
+        var_dump($reponse);
+        return $this->render('MMITVBundle:video:testvideo.html.twig');
 
     }
 }
