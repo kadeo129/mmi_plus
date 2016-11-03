@@ -206,6 +206,21 @@ mmitv_test_video:
     requirements:
                 id:    \d+
 
+mmitv_profil:
+    path:    /profil
+    defaults:
+        _controller: MMITVBundle:Main:profil
+    requirements:
+                id:    \d+
+
+mmitv_youtube:
+    path:    /youtube
+    defaults:
+        _controller: MMITVBundle:Main:youtube
+
+
+
+
 
 
 

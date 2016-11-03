@@ -117,7 +117,7 @@ class MainController extends Controller
         $renew->purgeVideos();
 
         $this->get('session')->getFlashBag()->set('notice', 'Une nouvelle grille a été créée.');
-        return $this->redirectToRoute('mmitv_home');
+        return $this->redirectToRoute('mmitv_profil');
     }
 
     public function liveAction(Request $request)
@@ -285,4 +285,143 @@ class MainController extends Controller
             'bloc'=>$blocs,
         ));
     }
+
+    public function profilAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        }
+       $role =  $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN');
+
+
+        if($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        {
+            $planning = $em->getRepository('MMITVBundle:Grid')
+                ->getMostRecentId();
+
+            $gridId = $planning->getId();
+
+            $blocs = $em->getRepository('MMITVBundle:Bloc')
+                ->getOrderedBlocs($gridId)
+            ;
+
+            $videos = array();
+
+            foreach($blocs as $bloc)
+            {
+                if($bloc->getVideos() != null)
+                {
+                    foreach($bloc->getVideos() as $video)
+                    {
+                        $videos[]=$video;
+                    }
+                }
+            }
+
+            $nbVideos=count($videos);
+        }
+        elseif($this->container->get('security.authorization_checker')->isGranted('ROLE_USER'))
+        {
+            $planning=null;
+            $videos=$em->getRepository('MMITVBundle:Video')->findByUser($user->getId());
+            $nbVideos=count($videos);
+        }
+        return $this->render('MMITVBundle:main:profil.html.twig',array('user'=>$user,'videos'=>$videos, 'planning'=>$planning, 'nbVideos'=>$nbVideos));
+    }
+
+    public function youtubeAction()
+    {
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        }
+
+        $client = new \Google_Client();
+        $client->setApplicationName("Client_Youtube_Examples");
+        $apiKey = 'AIzaSyDLrFMyS5k8I6WMy3ZuG4atoORkik8nybI'; // Change this line.
+        // Warn if the API key isn't changed.
+        if (strpos($apiKey, "<") !== false) {
+            echo 'bad id';
+            exit;
+        }
+        $client->setDeveloperKey($apiKey);
+
+        $service = new \Google_Service_YouTube($client);
+
+        // Call the search.list method to retrieve results matching the specified
+        // query term.
+        $searchResponse = $service->search->listSearch('id,snippet', array(
+            'q' => 'geek and sundry',
+            'maxResults' => 10,
+        ));
+        $videos = array();
+        $channels = array();
+        $playlists = array();
+        // Add each result to the appropriate list, and then display the lists    of
+        // matching videos, channels, and playlists.
+        foreach ($searchResponse['items'] as $searchResult) {
+            switch ($searchResult['id']['kind']) {
+                case 'youtube#video':
+                    $videos[]= array("title" => $searchResult['snippet']['title'], "video_id" => $searchResult['id']['videoId']);
+                    break;
+                case 'youtube#channel':
+                    $channels[]= array("title" => $searchResult['snippet']['title'], "channel_id" => $searchResult['id']['channelId']);
+                    break;
+                case 'youtube#playlist':
+                    $playlists[]= array("title" => $searchResult['snippet']['title'], "playlist_id" => $searchResult['id']['playlistId']);
+                    break;
+            }
+        }
+
+        return $this->render('MMITVBundle:main:youtube.html.twig',array(
+            'youtube_videos' => $videos,
+            'youtube_channels' => $channels,
+            'youtube_playlists' => $playlists,
+            'user'=>$user
+        ));
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

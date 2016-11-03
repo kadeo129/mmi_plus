@@ -37,4 +37,17 @@
 .nom h1 {
     height: 30px;
     overflow: hidden;
+
+}
+
+.ablanc
+{
+    text-decoration:none;
+    color:white;
+}
+
+.ablanc:hover
+{
+    text-decoration:none;
+    color:white;
 }

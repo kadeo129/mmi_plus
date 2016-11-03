@@ -6,22 +6,6 @@
 {% endblock %}
 {% block body %}
 
-    <div class="row">
-        <div class="container timeline--button">
-                    <button class="oblikd btn"><a href="{{ path('mmi_tv_renew', {'id': planning.id}) }}">Valider la grille</a></button>
-                    <button class="oblikd btn"><a href="{{ path('mmitv_video_new', {'id': planning.id}) }}">Ajouter une vidéo</a></button>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="container">
-            <div class="col-md-9 col-xs-12">
-                <h1>Semaine {{ planning.week }}</h1>
-            </div>
-        </div>
-    </div>
 
     <div class="apercu col-md-3 col-xs-12">
         <div class="visu">
@@ -56,7 +40,7 @@
         <table cellspacing="3">
             <tr class="entree">
                 <td class="change">
-                    <a href="precedent.php"><h1> < </h1></a><a href="suivant.php"><h1> > </h1></a>
+                    <h1>Semaine {{ planning.week }}</h1>
                 </td>
                 <td>L</td>
                 <td>M</td>

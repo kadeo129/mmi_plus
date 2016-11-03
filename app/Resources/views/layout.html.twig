@@ -23,9 +23,8 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/css_general.css')  }}">
         <link rel="stylesheet" href="{{ asset('assets/css/css_navbar.css')  }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/css_apercu.css')  }}">
-        {#<link rel="stylesheet" href="{{ asset('assets/css/css_ajoutyoutube.css')  }}">#}
-        <link rel="stylesheet" href="{{ asset('assets/css/css_profil.css')  }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/css_apercu.css') }}">
+
 
 
     {% endblock %}
@@ -51,10 +50,10 @@
             </a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{ path('mmitv_biblio')}}"><div id="biblioa"><div id="biblio"></div></div></a></li>
+            <li><a href="{{ path('mmitv_video_index')}}"><div id="biblioa"><div id="biblio"></div></div></a></li>
             <li><a href="{{ path('mmitv_home')}}"><div id="timelinea"><div id="timeline"></div></div></a></li>
             <li class="deconav">
-                <a href="#"><div id="photoplus"><div style="border-radius:50%;height: 30px;width: 30px;background: url('{{ user.photo }}') 0 0/30px 30px no-repeat;"></div></div><p id="prenom" class="hidden-xs">{{ user.firstName }}</p></a>
+                <a href="{{ path('mmitv_profil')}}"><div id="photoplus"><div style="border-radius:50%;height: 30px;width: 30px;background: url('{{ user.photo }}') 0 0/30px 30px no-repeat;"></div></div><p id="prenom" class="hidden-xs">{{ user.firstName }}</p></a>
                 <ul class="nav" id="decomenu">
                     <li>
                         <a href="{{ path('fos_user_security_logout') }}">  	<!-- DECONNEXION	 -->

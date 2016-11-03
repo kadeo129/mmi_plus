@@ -1,0 +1,153 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }} Profil de {{ user.firstname }}{% endblock %}
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_biblio.css')  }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_profil.css')  }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css_ajoutyoutube.css')  }}">
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="biblio col-md-9 col-xs-12">
+
+        <div class="row">
+            <div class="profil col-xs-12">
+                <div class="photo oblikd"><div id="photobande"><div style="background: url('{{ user.photo }}') 0 -80px/260px no-repeat; height: 100%;width: 140%;"></div></div></div>
+                <div class="nom oblikd bgvert"><h1>{{ user.firstname }} {{ user.lastname }}</h1></div>
+                <div class="promo oblikd"><h1>MMI2D</h1></div>
+                <div class="nbvideos oblikd"><h1><span>{{ nbVideos }}</span> {% if nbVideos == 1 %}vidéo{% else %}vidéos{% endif %}</h1></div>
+
+            </div>
+        </div>
+
+        {% for message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-info">
+                <strong>Message flash</strong> : {{ message }}
+            </div>
+        {% endfor %}
+
+
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <h1 class="titre"><span>></span> Vidéos à trier</h1>
+        {% else %}
+            <h1 class="titre"><span>></span> Mes vidéos</h1>
+        {% endif %}
+
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <table class="table table-responsive">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Url</th>
+                    <th>Durée</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Image associée</th>
+                    <th>Catégorie</th>
+                    <th>Actions possibles</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for video in videos %}
+                    <tr>
+                        <td>{{ video.title }}</td>
+                        <td>{{ video.url }}</td>
+                        <td>{{ video.duration|date("i-s") }}</td>
+                        <td>{{ video.description }}</td>
+                        <td>{{ video.date|date("m/d/Y") }}</td>
+                        <td><div class="img-responsive"><img src="{{ video.poster }}" alt=""/></div></td>
+                        <td>{{ video.category.name }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('mmitv_video_show', { 'id': video.id }) }}">Voir</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('mmitv_video_edit', { 'id': video.id }) }}">Editer</a>
+                                </li>
+                            </ul>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="row">
+                <button type="submit" id="submit" name="submit" class="form-control noborder">
+                    <span class="hover-bg oblikd"></span>
+                    <img src="{{ asset('assets/img/icon/plusblanc.png')  }}">
+                    <a class="ablanc" href="{{ path('mmi_tv_renew', {'id': planning.id}) }}"><h1>Valider la grille</h1></a>
+                </button>
+            </div>
+        {% endif %}
+
+
+
+    </div>
+    <div class="apercu col-md-3 col-xs-12">
+        <div class="visu">
+            <div class="categorie">
+                <h1><span>></span> Catégorie</h1>
+            </div>
+            <div class="lecteur">
+                <iframe src="https://www.youtube.com/embed/wC1SywXKfqo" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="titre bgvert">
+                <h1>Serge Le Mytho #01 - Pourquoi Serge a arrêté l'école ?</h1>
+            </div>
+        </div>
+        <div class="info">
+            <div class="description col-xs-12">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="infobis">
+                <div class="auteur col-lg-8 col-xs-6">
+                    <a href="#"><div id="photoplus"><div style="border-radius:50%;height: 30px;width: 30px;background: url('{{ user.photo }}') 0 0/30px 30px no-repeat;"></div></div><p id="prenom" class="hidden-md">{{ user.firstname }}</p></a>
+                </div>
+                <div class="boutons col-lg-4 col-xs-6">
+                    <a href="#"><div id="suppa"><div id="supp"></div></div></a>
+                    <a href="#"><div id="modifa"><div id="modif"></div></div></a>
+                    <a href="#"><div id="signala"><div id="signal"></div></div></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3>Video List</h3>
+    <ul>
+        {% for video in youtube_videos %}
+            <li>{{ video.title }} ({{ video.video_id }})</li>
+        {% endfor %}
+    </ul>
+    <h3>Channels list</h3>
+    <ul>
+        {% for channel in youtube_channels %}
+            <li>{{ channel.title }} ({{ channel.channel_id }})</li>
+        {% endfor %}
+    </ul>
+    <h3>Playlists</h3>
+    <ul>
+        {% for playlist in youtube_playlists %}
+            <li>{{ playlist.title }} ({{ playlist.playlist_id }})</li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/js/biblio.js')  }}"></script>
+    <script type="text/javascript">
+        $("#prenom").addClass("current");
+        $("#infotime").css( "display", "none" );
+    </script>
+{% endblock %}

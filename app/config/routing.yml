@@ -5,13 +5,6 @@ mmitv:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
-mmitv_renew:
-    path:    /renew/{weeknumber}
-    defaults:
-        _controller: MMITVBundle:Controller:Bloc:renew
-    requirements:
-        id:    \d+
-
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

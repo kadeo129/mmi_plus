@@ -105,6 +105,4 @@ class VideoRepository extends \Doctrine\ORM\EntityRepository
             ;
     }
 
-
-
 }

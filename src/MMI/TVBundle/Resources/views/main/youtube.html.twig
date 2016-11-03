@@ -1,0 +1,122 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }} Dashboard{% endblock %}
+
+{% block style %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/css_biblio.css')  }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/css_ajoutyoutube.css') }}">
+{% endblock %}
+{% block script %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('assets/js/biblio.js')  }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/ajoutvideo-ajax.js')  }}"></script>
+    <script type="text/javascript">
+        $("#infotime").css( "display", "none" );
+    </script>
+{% endblock %}
+{% block body %}
+    <nav class="sousmenu navbar">
+        <ul class="nav">
+            <li class="active col-xs-6 onglet1"><a  href="#1a" data-toggle="tab"><h1 class="text-center">Bibliothèque</h1></a></li>
+            <li class="col-xs-6"><a href="#2a" data-toggle="tab"><h1 class="text-center">Vidéo Youtube</h1></a></li>
+        </ul>
+
+        <div class="tab-content clearfix">
+
+            <div class="tab-pane active" id="1a">
+                <div class="biblio col-md-9 col-xs-12">
+
+                    <nav class="tri hidden-xs hidden-ms">
+                        <ul id="triul">
+                            <li class="actual"><h1 class="filter" data-filter=".all">tous</h1></li>
+                            <li><h1 class="filter" data-filter=".actus">actus</h1></li>
+                            <li><h1 class="filter" data-filter=".visuel">visuel</h1></li>
+                            <li><h1 class="filter" data-filter=".techno">techno</h1></li>
+                            <li><h1 class="filter" data-filter=".ateliers">ateliers</h1></li>
+                            <li><h1 class="filter" data-filter=".fun">fun</h1></li>
+                            <li><h1 class="filter" data-filter=".aftermmi">after mmi</h1></li>
+                        </ul>
+                    </nav>
+
+
+                    <div class="list col-xs-12">
+
+                        <div class="portfolio actus all" data-cat="actus">
+                            <img src="{{ asset('assets/img/portfolios/logo/1.jpg')  }}" alt="" />
+                        </div>
+
+                        <div class="portfolio visuel all" data-cat="visuel">
+                            <img src="{{ asset('assets/img/portfolios/logo/2.jpg')  }}" alt="" />
+                        </div>
+
+                        <div class="portfolio techno all" data-cat="techno">
+                            <img src="{{ asset('assets/img/portfolios/logo/3.jpg')  }}" alt="" />
+                        </div>
+
+                        <div class="portfolio ateliers all" data-cat="ateliers">
+                            <img src="{{ asset('assets/img/portfolios/logo/4.jpg')  }}" alt="" />
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <?php include 'apercu.php'; ?>
+
+
+            </div>
+
+            <div class="container main tab-pane" id="2a">
+                <form>
+                    <div class="container pull-left col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="lien"><h1><span>></span>Lien YouTube</h1></label>
+                            <input type="text" class="form-control noborder get-link" id="lien" value="">
+                            <h1 id="submitlien" class="form-control noborder">OK</h1>
+
+                            <!-- <button id="submitlien" class="form-control noborder">
+                                <h1>OK</h1>
+                            </button> -->
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="titre"><h1><span>></span> Titre</h1></label>
+                            <input type="text" class="form-control noborder" id="titre">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputdes"><h1><span>></span> Description</h1></label>
+                            <textarea class="form-control noborder" id="inputdes"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="container col-md-6 col-xs-12">
+                        <div class="form-group">
+                            <label for="lien"><h1><span>></span> Aperçu</h1></label>
+                            <iframe width="100%" height="290" src="" frameborder="0" allowfullscreen id="ytplayer"></iframe>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputcat"><h1><span>></span> Catégorie</h1></label>
+                            <select class="form-control noborder" id="inputcat">
+                                <option>AfterMMI</option>
+                                <option>Ateliers</option>
+                                <option>Tutos Visuel</option>
+                                <option>Tutos Techno</option>
+                                <option>Actus & Culture</option>
+                                <option>Fun & divertissement</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="form-control noborder">
+                            <span class="hover-bg oblikd"></span>
+                            <img src="{{ asset('assets/img/icon/plusblanc.png')  }}">
+                            <h1>Envoyer la vidéo</h1></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </nav>
+{%  endblock  %}
